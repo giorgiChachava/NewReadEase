@@ -1,0 +1,152 @@
+body {
+    min-width:600px!important;
+    margin: 0;
+}
+
+button {
+    border-radius: 4px;
+}
+/* Video Feed Styling */
+#overlay {
+/* Video Feed Styling:
+ * Include the !important keyword to override default styles applied by JS.
+ * webgazer.js sets defaults for: display, position, top, left, width, height
+ */
+}
+#webgazerVideoContainer {
+    display: block !important; 
+    position: fixed !important;
+    top: 0px !important;
+    left: 0px !important;
+    width: 320px !important;
+    height: 240px !important;
+    z-index: 1;
+}
+
+#backToMenu{
+    background: #2a6bb7;
+     color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+  transition: background 0.3s ease;
+}
+
+
+html::-webkit-scrollbar, 
+body::-webkit-scrollbar {
+    display: none;
+}
+
+html, body {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+
+.modal-backdrop {
+    background-color: transparent !important;
+    opacity: 0 !important;
+  }
+
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab&family=Comic+Neue:wght@400;700&display=swap');
+        
+        .font-handwriting {
+            font-family: 'Comic Neue', cursive;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.2s;
+        }
+
+        .theme-light {
+            --bg: #f0f9ff;
+            --card-bg: #ffffff;
+            --text: #1a202c;
+            --accent: #93c5fd;
+            --accent-text: #1e40af;
+            --border: #bfdbfe;
+        }
+
+        .theme-dark {
+            --bg: #1e293b;
+            --card-bg: #334155;
+            --text: #f1f5f9;
+            --accent: #60a5fa;
+            --accent-text: #f1f5f9;
+            --border: #334155;
+        }
+
+        .theme-high-contrast {
+            --bg: #fef9c3;
+            --card-bg: #ffffff;
+            --text: #000000;
+            --accent: #fcd34d;
+            --accent-text: #000000;
+            --border: #000000;
+        }
+
+        .theme-dyslexia {
+            --bg: #ffe4e1;
+            --card-bg: #ffffff;
+            --text: #1a202c;
+            --accent: #fda4af;
+            --accent-text: #1a202c;
+            --border: #fda4af;
+        }
+
+        .theme-rainbow {
+            --bg: linear-gradient(to right, #fee2e2, #fef9c3, #d1fae5);
+            --card-bg: #ffffff;
+            --text: #1a202c;
+            --accent: linear-gradient(to right, #f87171, #fbbf24, #34d399);
+            --accent-text: #1a202c;
+            --border: #93c5fd;
+        }
+
+        .theme-space {
+            --bg: linear-gradient(to bottom, #1e3a8a, #312e8e);
+            --card-bg: #312e8e;
+            --text: #f8fafc;
+            --accent: #3b82f6;
+            --accent-text: #f8fafc;
+            --border: #3b82f6;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: sans-serif;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-color: var(--border);
+        }
+
+        .accent-bg {
+            background-color: var(--accent);
+            color: var(--accent-text);
+        }
+
+        .btn-hover:hover {
+            transform: scale(1.02);
+            transition: all 0.2s;
+        }
+
+        .active {
+            background-color: var(--accent);
+            color: var(--accent-text) !important;
+        }
+
+        .preview-text {
+            transition: all 0.3s ease;
+        }
+
+        .theme-button.active {
+            background: var(--accent);
+            color: var(--accent-text);
+        }

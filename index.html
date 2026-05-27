@@ -1,0 +1,3693 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Readease</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/bootstrap.min.css">
+  <script src="exercises.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="/main.js"></script>
+
+</head>
+<body>
+
+<!-- MAIN THINGIIES------------------------------>
+<div id="main">
+    <header id="mainHeader">
+  <div>
+    <!-- Logo and Site Name -->
+    <div class="logo-container">
+      <div class="logo-icon">
+        <span>📖</span>
+      </div>
+      <h1>
+        <a href="/index.html">ReadEase</a>
+      </h1>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav aria-label="Primary navigation">
+      <ul>
+        <li>
+          <a onclick="showSection('toolsSection'); hideExercises()">ხელსაწყოები</a>
+        </li>
+        <li>
+          <a onclick="showSection('exercisesSection'); hideExercises()">სავარჯიშოები</a>
+        </li>
+        <li>
+          <a onclick="showSection('aboutSection'); hideExercises()">ჩვენ შესახებ</a>
+        </li>
+      </ul>
+    </nav>
+
+
+      <!-- Back to Main Menu Button -->
+      <button class="back-button" onclick="location.href='index.html'">
+        ← მთავარი გვერდი
+      </button>
+    </div>
+  </div>
+    </header>
+    <style>
+    #mainHeader {
+      background-color: #2c3e50;
+      color: white;
+      padding: 0 5%;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    #mainHeader > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      min-height: 60px;
+      height: auto;
+      padding: 10px 0;
+      flex-wrap: wrap;
+    }
+
+    /* Logo and Site Name */
+    #mainHeader .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-shrink: 0;
+      margin-bottom: 5px;
+    }
+
+    #mainHeader .logo-icon {
+      background-color: #4a6fa5;
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #mainHeader .logo-icon span {
+      font-size: 20px;
+    }
+
+    #mainHeader h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    #mainHeader h1 a {
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Main Navigation */
+    #mainHeader nav {
+      margin: 10px 0;
+    }
+
+    #mainHeader nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 25px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    #mainHeader nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+      display: block;
+      white-space: nowrap;
+    }
+
+    #mainHeader nav a:hover {
+      background-color: #4a6fa5;
+    }
+
+    /* User Controls */
+    #mainHeader .user-controls {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      margin-top: 5px;
+    }
+
+    #mainHeader #trackingStatus {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #28a745;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    #mainHeader #trackingStatus span:first-child {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-color: white;
+      border-radius: 50%;
+    }
+
+    #mainHeader .back-button {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    #mainHeader .back-button:hover {
+      background-color: rgba(255,255,255,0.2);
+    }
+
+    /* Media Queries for Responsiveness */
+
+  
+
+    @media (max-width: 1000px) {
+      #mainHeader > div {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+      }
+      
+      #mainHeader .logo-container {
+        justify-content: center;
+        margin-bottom: 0;
+      }
+      
+      #mainHeader nav ul {
+        gap: 15px;
+      }
+      
+      #mainHeader .user-controls {
+        justify-content: center;
+        margin-top: 0;
+      }
+      #mainHeader #trackingStatus {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #mainHeader {
+        padding: 0 3%;
+      }
+      
+      #mainHeader nav ul {
+        gap: 10px;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      #mainHeader .user-controls {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      #mainHeader h1 {
+        font-size: 18px;
+      }
+      
+      #mainHeader #trackingStatus {
+        font-size: 12px;
+        padding: 5px 10px;
+      }
+      
+      #mainHeader .back-button {
+        padding: 6px 12px;
+        font-size: 14px;
+      }
+    }
+    </style>
+
+<div id="toolsSection" style="display: none; background: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+  <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
+    
+    <!-- Font Size Controls -->
+    <div style="flex: 1; min-width: 150px;">
+      <h3 style="margin-top: 0; color: #2c3e50; font-size: 16px;">ტექსტის ზომა</h3>
+      <div style="display: flex; gap: 8px;">
+        <button onclick="adjustFontSize(-1)" style="background: #4a6fa5; color: white; border: none; border-radius: 4px; padding: 5px 10px; cursor: pointer;">A-</button>
+        <button onclick="resetFontSize()" style="background: #6c757d; color: white; border: none; border-radius: 4px; padding: 5px 10px; cursor: pointer;">წაშლა</button>
+        <button onclick="adjustFontSize(1)" style="background: #4a6fa5; color: white; border: none; border-radius: 4px; padding: 5px 10px; cursor: pointer;">A+</button>
+      </div>
+    </div>
+    
+    <!-- Color Theme -->
+    <div style="flex: 1; min-width: 150px;">
+      <h3 style="margin-top: 0; color: #2c3e50; font-size: 16px;">Color Theme</h3>
+      <select onchange="changeColorTheme(this.value)" style="width: 100%; padding: 5px; border-radius: 4px; border: 1px solid #ddd;">
+        <option value="light">Light Mode</option>
+        <option value="dark">Dark Mode</option>
+        <option value="sepia">Sepia</option>
+        <option value="highContrast">High Contrast</option>
+        <option value="lightBeige">Light beige</option>
+        <option value="dyslexia-friendly">dyslexia-friendly</option>
+      </select>
+    </div>
+
+    
+    <!-- Dyslexia Tools -->
+    <div style="flex: 1; min-width: 150px;">
+      <h3 style="margin-top: 0; color: #2c3e50; font-size: 16px;">დისლექსია</h3>
+      <div style="display: flex; gap: 8px;">
+        <button id="dyslexiaFontBtn" onclick="rotateDyslexiaFont()" style="background: #6f42c1; color: white; border: none; border-radius: 4px; padding: 5px">🆎 ფონტი</button>
+        <button onclick="toggleLetterSpacing()" style="background: #6f42c1; color: white; border: none; border-radius: 4px; padding: 5px 10px; cursor: pointer;">↔ ინტერვალი</button>
+      </div>
+    </div>
+    
+  </div>
+  <script>
+// Tool Functions (minimal implementation)
+function adjustFontSize(change) {
+  const root = document.documentElement;
+  const currentSize = parseFloat(getComputedStyle(root).fontSize) || 16;
+  
+  // Set min/max boundaries (WCAG recommended range)
+  const minSize = 12;  // Absolute minimum
+  const maxSize = 22;  // Comfortable maximum
+  
+  // Calculate new size with constraints
+  const newSize = Math.max(minSize, Math.min(maxSize, currentSize + change));
+  
+  // Apply only if changed
+  if (newSize !== currentSize) {
+    root.style.fontSize = `${newSize}px`;
+    
+    // Optional: Visual feedback
+    const feedback = document.createElement('div');
+    feedback.textContent = `Text size: ${newSize}px`;
+    feedback.style.position = 'fixed';
+    feedback.style.bottom = '20px';
+    feedback.style.right = '20px';
+    feedback.style.background = '#4a6fa5';
+    feedback.style.color = 'white';
+    feedback.style.padding = '5px 10px';
+    feedback.style.borderRadius = '4px';
+    feedback.style.zIndex = '1000';
+    document.body.appendChild(feedback);
+    setTimeout(() => feedback.remove(), 1000);
+  }
+}
+function resetFontSize() {
+  document.documentElement.style.fontSize = '16px';
+}
+function changeColorTheme(theme) {
+  document.body.className = theme + '-theme';
+}
+
+const dyslexiaFonts = [
+  { name: "OpenDyslexic", font: "'OpenDyslexic', sans-serif" },
+  { name: "Lexend", font: "'Lexend', sans-serif" },
+  { name: "Comic Sans", font: "'Comic Sans MS', cursive" },
+  { name: "Atkinson", font: "'Atkinson Hyperlegible', sans-serif" },
+  { name: "Sylexiad", font: "'Sylexiad Sans', sans-serif" },
+  { name: "Verdana", font: "'Verdana', sans-serif" },            // very readable, popular
+  { name: "Tiresias", font: "'Tiresias Infofont', sans-serif" }, // designed for low vision
+  { name: "Andika", font: "'Andika', sans-serif" },              // clear & easy
+  { name: "Calibri", font: "'Calibri', sans-serif" },            // clean modern
+  { name: "Trebuchet MS", font: "'Trebuchet MS', sans-serif" }   // friendly & readable
+];
+  
+  let currentFontIndex = 0;
+
+  function rotateDyslexiaFont() {
+    currentFontIndex = (currentFontIndex + 1) % dyslexiaFonts.length;
+    const font = dyslexiaFonts[currentFontIndex];
+    
+    document.body.style.fontFamily = font.font;
+    document.getElementById("currentFontName").textContent = font.name;
+    
+    // Visual feedback
+    const btn = document.getElementById("dyslexiaFontBtn");
+    btn.style.transform = "scale(0.95)";
+    setTimeout(() => { btn.style.transform = "scale(1)"; }, 100);
+  }
+function toggleLetterSpacing() {
+  document.body.classList.toggle('wide-spacing');
+}
+</script>
+<style>
+.light-theme{background:#FEFEFE;color:#222;font-family:'Segoe UI',system-ui,sans-serif;-webkit-font-smoothing:antialiased;font-weight:450;line-height:1.7}
+.dark-theme{background:#1A1A1A;color:#F0F0F0;font-family:'SF Pro Text',system-ui,sans-serif;-webkit-font-smoothing:subpixel-antialiased;line-height:1.8}
+.sepia-theme{background:#F3EAD3;color:#4A3C29;font-family:Literata,Georgia,serif;line-height:1.9}
+.highContrast-theme{background:#000;color:#FFEE00;font-family:'Arial Black',Impact,sans-serif;font-weight:700;line-height:2;text-shadow:0 0 1px #000}
+.lightBeige-theme{background:#F8F4E8;color:#2D3748;font-family:Inter,system-ui,sans-serif;font-weight:500}
+.dyslexia-friendly-theme{background:#FFF;color:#222;font-family:OpenDyslexic,'Comic Sans',sans-serif;line-height:2;letter-spacing:0.05em}
+
+a,button {color:inherit; cursor:pointer; transition:color .3s;}
+a:hover,button:hover {color:#007BFF; text-decoration:underline;}
+body {line-height:1.6;}
+.container {padding:1rem 2rem;}
+
+.dyslexic-font { font-family: 'OpenDyslexic', Arial; }
+.wide-spacing { letter-spacing: 0.1em; }
+</style>
+</div>
+
+
+<div id="aboutSection" style="display: none; max-width: 900px; margin: 0 auto; padding: 30px; color: #333; line-height: 1.7;">
+  <!-- Header with gradient accent -->
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h2 style="color: #2c3e50; font-size: 36px; font-weight: 600; margin-bottom: 15px; position: relative; display: inline-block;">
+      ReadEase-ის შესახებ
+      <span style="position: absolute; bottom: -10px; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #4a6fa5, #6dd5ed); border-radius: 2px;"></span>
+    </h2>
+    <p style="color: #666; font-size: 18px; max-width: 700px; margin: 0 auto;">ინოვაციური ხელსაწყოები წაკითხვის გასამარტივებლათ</p>
+  </div>
+
+  <!-- Mission and Features Cards -->
+  <div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 40px 0;">
+    <!-- Mission Card -->
+    <div style="flex: 1; min-width: 300px; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='none'">
+      <div style="background: linear-gradient(135deg, #4a6fa5, #6dd5ed); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+        <span style="color: white; font-size: 24px;">✓</span>
+      </div>
+      <h3 style="color: #2c3e50; font-size: 22px; margin-top: 0; margin-bottom: 15px;">ჩვენი მისია</h3>
+      <p style="margin: 0; color: #555;">
+        ვქმნით <strong style="color: #4a6fa5;">უფასო წაკითხვის ხელსაწყოებს</strong> დისლექსიით, ADHD-თი და სხვა გამოწვევების მქონე ბავშვებისთვის.ეს ყველაფერი კი რეგისტრაციის გარეშე.
+      </p>
+    </div>
+
+    <!-- Features Card -->
+    <div style="flex: 1; min-width: 300px; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='none'">
+      <div style="background: linear-gradient(135deg, #6dd5ed, #a8e063); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+        <span style="color: white; font-size: 24px;">✨</span>
+      </div>
+      <h3 style="color: #2c3e50; font-size: 22px; margin-top: 0; margin-bottom: 15px;">მთავარი ფუნქციები</h3>
+      <ul style="padding-left: 20px; margin: 0; color: #555;">
+        <li style="margin-bottom: 8px; position: relative; padding-left: 25px;">
+          <span style="position: absolute; left: 0; color: #6dd5ed;">•</span> 10+ დისლექსიისთვის ოპტიმიზებული ფონტი
+        </li>
+        <li style="margin-bottom: 8px; position: relative; padding-left: 25px;">
+          <span style="position: absolute; left: 0; color: #6dd5ed;">•</span> თვალის ტრეკინგი
+        </li>
+        <li style="margin-bottom: 8px; position: relative; padding-left: 25px;">
+          <span style="position: absolute; left: 0; color: #6dd5ed;">•</span> მრავალი სახალისო სავარჯიშო
+        </li>
+        <li style="position: relative; padding-left: 25px;">
+          <span style="position: absolute; left: 0; color: #6dd5ed;">•</span> ოპტიმიზირებული ფონები
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Values Section -->
+  <div style="background: linear-gradient(135deg, #f8f9fa, #eef2f5); padding: 40px; border-radius: 12px; margin-top: 30px; border: 1px solid rgba(0,0,0,0.05);">
+    <h3 style="color: #2c3e50; font-size: 26px; margin-top: 0; margin-bottom: 30px; text-align: center;">ჩვენი ღირებულებები</h3>
+    
+    <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
+      <!-- Value 1 -->
+      <div style="flex: 1; min-width: 250px; max-width: 300px; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.03);">
+        <div style="background: #4a6fa5; color: white; width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 15px;">🔒</div>
+        <h4 style="color: #2c3e50; margin-bottom: 10px; font-size: 18px; font-weight: 600;">კონფიდენციალობა პირველ რიგში</h4>
+        <p style="margin: 0; color: #666; font-size: 15px; line-height: 1.6;">კამერის მონაცემები არ ინახება და არ გადადის სერვერზე.</p>
+      </div>
+      
+      <!-- Value 2 -->
+      <div style="flex: 1; min-width: 250px; max-width: 300px; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.03);">
+        <div style="background: #6dd5ed; color: white; width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 15px;">🔠</div>
+        <h4 style="color: #2c3e50; margin-bottom: 10px; font-size: 18px; font-weight: 600;">უნივერსალური დიზაინი</h4>
+        <p style="margin: 0; color: #666; font-size: 15px; line-height: 1.6;">მუშაობს როგორც კამერით, ასევე მის გარეშე.</p>
+      </div>
+      
+      <!-- Value 3 -->
+      <div style="flex: 1; min-width: 250px; max-width: 300px; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.03);">
+        <div style="background: #a8e063; color: white; width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 15px;">🆓</div>
+        <h4 style="color: #2c3e50; margin-bottom: 10px; font-size: 18px; font-weight: 600;">ყოველთვის უფასო</h4>
+        <p style="margin: 0; color: #666; font-size: 15px; line-height: 1.6;">არანაირი გადახდა ან გამოწერა, შესაძლებლობა ყველასთვის.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Note -->
+  <div style="text-align: center; margin-top: 50px;">
+    <p style="display: inline-block; background: linear-gradient(90deg, #ff9a9e, #fad0c4); color: white; padding: 12px 30px; border-radius: 50px; font-size: 15px; font-weight: 600; margin: 0; box-shadow: 0 4px 15px rgba(250, 208, 196, 0.5);">
+      შექმნილია ♥ ყველასასთვის
+    </p>
+  </div>
+</div>
+
+
+<div id="exercisesSection" style="max-width: 800px; margin: 0 auto; padding: 20px;">
+
+  <!-- Header with Search -->
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; gap: 15px; flex-wrap: wrap;">
+    <h2 style="color: #2c3e50; margin: 0; font-size: 24px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+      <span style="background: #4a6fa5; width: 36px; height: 36px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; color: white;">📚</span>
+      სავარჯიშოები
+    </h2>
+  </div>
+
+  <!-- Exercise Categories (Tabs) -->
+  <div style="display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 5px; padding-top:5px; padding-left: 2px">
+    <button onclick="filterExercises('all')" style="background: #4a6fa5; color: white; border: none; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 500; white-space: nowrap;">ყველა</button>
+    <button onclick="filterExercises('level1')" style="background: #e2e8f0; color: #2c3e50; border: none; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 500; white-space: nowrap;">მარტივი</button>    <button onclick="filterExercises('level3')" style="background: #e2e8f0; color: #2c3e50; border: none; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 500; white-space: nowrap;">რთული</button>
+  </div>
+
+  <!-- Exercise List -->
+  <div id="exercisesContainer"style="display: grid; gap: 16px;">
+
+    <!-- 1. Letter Mastery -->
+    <div class="exercise-card" data-level="level1"
+    onclick="startExercise('letter-mastery')" id="letter-mastery"
+         style="background: white; border-radius: 12px; padding: 0; cursor: pointer; 
+                box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: all 0.2s; border: 1px solid #f0f4f8;"
+         onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)'" 
+         onmouseout="this.style.transform='none'; this.style.boxShadow='0 2px 6px rgba(0,0,0,0.05)'">
+      <div style="background: linear-gradient(135deg, #6f42c1, #8e44ad); height: 6px; border-radius: 12px 12px 0 0;"></div>
+      <div style="padding: 16px; display: flex; gap: 16px;">
+        <div style="background: #f8f5ff; color: #6f42c1; width: 48px; height: 48px; border-radius: 10px; display: grid; place-items: center; font-size: 22px; flex-shrink: 0;">🔤</div>
+        <div style="flex: 1;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="margin: 0 0 6px 0; color: #2c3e50; font-size: 17px; font-weight: 600;">Letter Mastery</h3>
+            <span style="background: #ecfdf5; color: #059669; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">მარტივი</span>
+          </div>
+          <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.5;">გაავრჯიშე შენი ტვინი რთული ასოების, როგორიცაა შ/წ და მ/ნ, გარჩევისთვის.</p>
+          <div style="display: flex; gap: 8px; margin-top: 12px;">
+            <span style="background: #f3e8ff; color: #6f42c1; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">ასოების ამოცნობა</span>
+            <span style="background: #e4d8fd; color: #685991; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">ფონეტიკა</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Emoji Word Finder -->
+    <div  class="exercise-card" data-level="level3"
+    onclick="startExercise('emoji-word-finder')" id="emoji-word-finder"
+         style="background: white; border-radius: 12px; padding: 0; cursor: pointer; 
+                box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: all 0.2s; border: 1px solid #f0f4f8;"
+         onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)'" 
+         onmouseout="this.style.transform='none'; this.style.boxShadow='0 2px 6px rgba(0,0,0,0.05)'">
+      <div style="background: linear-gradient(135deg, #28a745, #2ecc71); height: 6px; border-radius: 12px 12px 0 0;"></div>
+      <div style="padding: 16px; display: flex; gap: 16px;">
+        <div style="background: #f0fdf4; color: #28a745; width: 48px; height: 48px; border-radius: 10px; display: grid; place-items: center; font-size: 22px; flex-shrink: 0;">🔠</div>
+        <div style="flex: 1;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="margin: 0 0 6px 0; color: #2c3e50; font-size: 17px; font-weight: 600;">Emoji word finder</h3>
+            <span style="background: #fee1c7; color: #92400e; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">რთული</span>
+          </div>
+          <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.5;">გაშიფრე ემოჯით მინიშებული სიტყვები, აარჩიე ისეთი ასოები რომლითაც მაგ სიტყვას ააწყობ.</p>
+          <div style="display: flex; gap: 8px; margin-top: 12px;">
+            <span style="background: #f3e8ff; color: #6f42c1; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">სიტყვების ამოცნობა</span>
+            <span style="background: #f3e8ff; color: #4271c1; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">სიტყვების ორთოგრაფია</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Find words 1 row -->
+    <div  class="exercise-card" data-level="level1"
+    onclick="startExercise('find-words')" id="find-words"
+         style="background: white; border-radius: 12px; padding: 0; cursor: pointer; 
+                box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: all 0.2s; border: 1px solid #f0f4f8;"
+         onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)'" 
+         onmouseout="this.style.transform='none'; this.style.boxShadow='0 2px 6px rgba(0,0,0,0.05)'">
+      <div style="background: linear-gradient(135deg, #d69e2e, #ed8936); height: 6px; border-radius: 12px 12px 0 0;"></div>
+      <div style="padding: 16px; display: flex; gap: 16px;">
+        <div style="background: #fef3c7; color: #d69e2e; width: 48px; height: 48px; border-radius: 10px; display: grid; place-items: center; font-size: 22px; flex-shrink: 0;">🕵</div>
+        <div style="flex: 1;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="margin: 0 0 6px 0; color: #2c3e50; font-size: 17px; font-weight: 600;">Find words</h3>
+            <span style="background: #ecfdf5; color: #059669; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">მარტივი</span>
+          </div>
+          <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.5;">გაიუმჯობესე თვალები რათა არწივივით თვალები გქონდეს! მოძებნე დამალული სიტყვები ასოების ზღვაში - ჩქარი და სახალისო. მზად ხარ რომ ყველა სიტყვა იპოვო?</p>
+          <div style="display: flex; gap: 8px; margin-top: 12px;">
+            <span style="background: #fef3c7; color: #92400e; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">ვიზუალური სკანირება</span>
+            <span style="background: #f3e8ff; color: #4271c1; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">სიტყვების ორთოგრაფია</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. odd one out -->
+    <div  class="exercise-card" data-level="level1"
+    onclick="startExercise('odd-one-out')" id="odd-one-out"
+         style="background: white; border-radius: 12px; padding: 0; cursor: pointer; 
+                box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: all 0.2s; border: 1px solid #f0f4f8;"
+         onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)'" 
+         onmouseout="this.style.transform='none'; this.style.boxShadow='0 2px 6px rgba(0,0,0,0.05)'">
+      <div style="background: linear-gradient(135deg, #e53e3e, #f56565); height: 6px; border-radius: 12px 12px 0 0;"></div>
+      <div style="padding: 16px; display: flex; gap: 16px;">
+        <div style="background: #fee2e2; color: #e53e3e; width: 48px; height: 48px; border-radius: 10px; display: grid; place-items: center; font-size: 22px; flex-shrink: 0;">🎯</div>
+        <div style="flex: 1;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="margin: 0 0 6px 0; color: #2c3e50; font-size: 17px; font-weight: 600;">Odd One Out</h3>
+            <span style="background: #ecfdf5; color: #059669; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">მარტივი</span>
+          </div>
+          <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.5;">იპოვე გამონაკლისი სურათების რიგში! გაართმევ თავს ამ გამოწვევას?</p>
+          <div style="display: flex; gap: 8px; margin-top: 12px;">
+            <span style="background: #fee2e2; color: #991b1b; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">ობზერვაცია</span>
+            <span style="background: #eff6ff; color: #1e40af; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">ლოგიკა</span>
+           <span style="background: #fff7ed; color: #9c4221; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">ფიქრი</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 5. Syllable Builder -->
+    <div  class="exercise-card" data-level="level3"
+    onclick="startExercise('syllable-builder')" id="syllable-builder"
+         style="background: white; border-radius: 12px; padding: 0; cursor: pointer; 
+                box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: all 0.2s; border: 1px solid #f0f4f8;"
+         onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)'" 
+         onmouseout="this.style.transform='none'; this.style.boxShadow='0 2px 6px rgba(0,0,0,0.05)'">
+      <div style="background: linear-gradient(135deg, #85a728, #2ecc71); height: 6px; border-radius: 12px 12px 0 0;"></div>
+      <div style="padding: 16px; display: flex; gap: 16px;">
+        <div style="background: #f0fdf4; color: #90a728; width: 48px; height: 48px; border-radius: 10px; display: grid; place-items: center; font-size: 22px; flex-shrink: 0;">🧩</div>
+        <div style="flex: 1;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="margin: 0 0 6px 0; color: #2c3e50; font-size: 17px; font-weight: 600;">Syllable Builder</h3>
+            <span style="background: #fee1c7; color: #92400e; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">რთული</span>
+          </div>
+          <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.5;">ააშენე ემოჯით მინიშებული სიტყვები, აირჩიე ისეთი მარცვალები რომლითაც მაგ სიტყვას ააწყობ.</p>
+          <div style="display: flex; gap: 8px; margin-top: 12px;">
+            <span style="background: #f3e8ff; color: #6f42c1; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">სიტყვების ამოცნობა</span>
+            <span style="background: #f3e8ff; color: #6f42c1; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">მარცვლები</span>
+            <span style="background: #f3e8ff; color: #4271c1; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">სიტყვების აწყობა</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 6. Letter Order -->
+    <div class="exercise-card" data-level="level1" 
+     onclick="startExercise('letter-order')" id="letter-order"
+     style="background: white; border-radius: 12px; padding: 0; cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: all 0.2s; border: 1px solid #f0f4f8;"
+     onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)'" 
+     onmouseout="this.style.transform='none'; this.style.boxShadow='0 2px 6px rgba(0,0,0,0.05)'">
+  
+  <div style="background: linear-gradient(135deg, #059669, #10b981); height: 6px; border-radius: 12px 12px 0 0;"></div>
+  
+  <div style="padding: 16px; display: flex; gap: 16px;">
+    <div style="background: #ecfdf5; color: #059669; width: 48px; height: 48px; border-radius: 10px; display: grid; place-items: center; font-size: 22px; flex-shrink: 0;">🔤</div>
+    
+    <div style="flex: 1;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0 0 6px 0; color: #2c3e50; font-size: 17px; font-weight: 600;">Letter Order</h3>
+        <span style="background: #ecfdf5; color: #059669; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">მარტივი</span>
+      </div>
+      
+      <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.5;">
+        აირჩიე ასოები სწორი თანმიმდევრობით, რათა შექმნა ნაჩვენები სიტყვა
+      </p>
+      
+      <div style="display: flex; gap: 8px; margin-top: 12px;">
+        <span style="background: #d1fae5; color: #065f46; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">ასოების დალაგება</span>
+        <span style="background: #f0fdf4; color: #166534; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">ფონეტიკა</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+<div id="letter-mastery-game" style="display: none; position: relative; width: 100%; height: 92vh;  overflow: hidden;">
+
+  <!-- Exercise Title Bar with Level Indicator -->
+  <div style="background: #4a6fa5; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center;">
+    <h2 style="color: white; margin: 0; font-size: 18px; font-weight: 500;">
+      <span style="margin-right: 10px;">🔤</span> 
+      Letter Mastery
+    </h2>
+
+    <!-- Level Indicator Boxes (Top Right) -->
+    <div style="display: flex; gap: 8px;">
+      <div style="font-size: 14px; color: white; margin-right: 5px; font-weight: 500; margin-top: 3px;">Level</div>
+      <div id="levelLM-1" class="level-box-LM active-LM">1</div>
+      <div id="levelLM-2" class="level-box-LM">2</div>
+      <div id="levelLM-3" class="level-box-LM">3</div>
+    </div>
+
+    <div>
+      <button onclick="closeExerciseLM()" style="background: none; color: white; border: 1px solid rgba(255,255,255,0.3); padding: 6px 12px; border-radius: 4px; font-size: 14px;">
+        უკან დაბრუნება
+      </button>
+    </div>
+  </div>
+
+  <!-- Start Screen -->
+  <div id="startScreenLM" style="height: calc(100% - 54px); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center;">
+    <div style="max-width: 500px;">
+      <h3 style="color: #4a6fa5; font-size: 24px; margin-bottom: 20px;">Letter Mastery Challenge</h3>
+      <div style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 30px;">
+        <p style="color: #64748b; margin-bottom: 15px; line-height: 1.6;">
+          მოძებნე და მონიშნე ყველა ეკრანის ზემოთ აღნიშნული სიტყვა.
+        </p>
+        <p style="color: #64748b; margin-bottom: 15px; line-height: 1.6;">
+          შემდეგ დონეზე გადასასვლელად, დაასრულე 4 რაუნდი.
+        </p>
+      </div>
+      <button onclick="startGameLM()" style="background: #4a6fa5; color: white; border: none; padding: 14px 40px; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        თამაშის დაწყება
+      </button>
+    </div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="gameScreenLM" style="height: calc(100% - 54px); display: none; flex-direction: column;">
+
+    <!-- Main Game Area -->
+    <div style="flex: 1; display: flex; flex-direction: column; padding: 20px; overflow-y: auto;">
+
+      <!-- Target Display -->
+      <div style="text-align: center; margin-bottom: 20px;">
+        <div style="display: inline-block; background: #e2e8f0; padding: 8px 20px; border-radius: 20px;">
+          <span style="font-size: 14px; color: #4a6fa5;">იპოვე ყველა:</span>
+          <span id="targetLetterLM" style="font-size: 28px; font-weight: bold; color: #4a6fa5; margin-left: 10px;">B</span>
+        </div>
+        <div style="margin-top: 10px;">
+          <span id="foundCountLM" style="font-size: 16px; font-weight: bold; color: #4a6fa5;">0</span>
+          <span style="font-size: 16px; color: #94a3b8;">/</span>
+          <span id="totalTargetsLM" style="font-size: 16px; color: #94a3b8;">6</span>
+        </div>
+      </div>
+
+      <!-- Game Grid -->
+      <div id="gameAreaLM" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; padding: 0 20px 20px; max-width: 800px; margin: 0 auto; flex: 1; align-content: center;">
+        <!-- Letters will be dynamically inserted here -->
+      </div>
+
+      <!-- Check Button -->
+      <div id="checkButtonContainerLM" style="display: none; text-align: center; margin-top: 20px; margin-bottom: 20px;">
+        <button onclick="verifyCompletionLM()" style="background: #4a6fa5; color: white; border: none; padding: 12px 30px; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer;">
+          პასუხის შემოწმება
+        </button>
+      </div>
+    </div>
+
+    <!-- Round Progress Boxes (Bottom) -->
+    <div style="padding: 15px 20px; background: #edf2f7; border-top: 1px solid #e2e8f0; display: flex; justify-content: center; gap: 15px;">
+      <div id="roundLM-1" class="round-box-LM"></div>
+      <div id="roundLM-2" class="round-box-LM"></div>
+      <div id="roundLM-3" class="round-box-LM"></div>
+      <div id="roundLM-4" class="round-box-LM"></div>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div id="feedbackModalLM" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.1); text-align: center; max-width: 300px; width: 90%; z-index: 100;">
+    <div style="width: 60px; height: 60px; background: #4a6fa5; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center;">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 6L9 17L4 12" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h3 id="resultTitleLM" style="color: #4a6fa5; margin-bottom: 10px; font-size: 18px;">ყოჩაღ!</h3>
+    <p id="resultMessageLM" style="color: #64748b; margin-bottom: 20px; font-size: 15px;">შენ იპოვე ყველა სწორად!</p>
+    <button onclick="startNewRoundLM()" style="background: #4a6fa5; color: white; border: none; padding: 8px 20px; border-radius: 6px; font-size: 14px; cursor: pointer; width: 100%;">
+      გაგრძელება
+    </button>
+  </div>
+
+  <style>
+    /* Level and Round Box Styling */
+    .level-box-LM {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      transition: all 0.3s;
+    }
+
+    .level-box-LM.active-LM {
+      background: white;
+      color: #4a6fa5;
+      transform: scale(1.1);
+    }
+
+    .round-box-LM {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .round-box-LM.completed-LM::after {
+      content: "✓";
+      color: #4CAF50;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* Letter styling */
+    .letter-LM {
+      aspect-ratio: 1/1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: #f1f5f9;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+      padding: 15px;
+    }
+    .letter-LM:hover {
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .letter-LM.found-LM {
+      background-color: #4CAF50 !important;
+      color: white !important;
+      transform: scale(0.95);
+    }
+    .letter-LM.incorrect-LM {
+      background-color: #f44336 !important;
+      color: white !important;
+    }
+  </style>
+
+  <script>
+    // Game variables
+    let currentLevelLM = 1;
+    let roundsCompletedLM = 0;
+    const maxLevelsLM = 3;
+    const maxRoundsLM = 4;
+    let foundLettersLM = 0;
+    let totalLettersLM = 5;
+    let lettersLM = [];
+    let foundElementsLM = [];
+    let levelConfigLM = {
+      1: { targets: 5, gridSize: 6, fontSize: 36, similarLetters: 5 },
+      2: { targets: 8, gridSize: 6, fontSize: 32, similarLetters: 7 },
+      3: { targets: 10, gridSize: 7, fontSize: 28, similarLetters: 9 }
+    };
+
+    // Start the game (from start screen)
+    function startGameLM() {
+      document.getElementById('startScreenLM').style.display = 'none';
+      document.getElementById('gameScreenLM').style.display = 'flex';
+      initGameLM();
+    }
+
+    // Initialize game
+    function initGameLM() {
+      foundLettersLM = 0;
+      foundElementsLM = [];
+      document.getElementById('foundCountLM').textContent = '0';
+      document.getElementById('totalTargetsLM').textContent = levelConfigLM[currentLevelLM].targets;
+      document.getElementById('checkButtonContainerLM').style.display = 'none';
+
+      // Update displays
+      updateLevelDisplayLM();
+      updateRoundDisplayLM();
+
+      generateLettersLM();
+    }
+
+    // Update level boxes
+    function updateLevelDisplayLM() {
+      for (let i = 1; i <= maxLevelsLM; i++) {
+        const box = document.getElementById(`levelLM-${i}`);
+        if (box) {
+          box.classList.toggle('active-LM', i === currentLevelLM);
+        }
+      }
+    }
+
+    // Update round boxes
+    function updateRoundDisplayLM() {
+      for (let i = 1; i <= maxRoundsLM; i++) {
+        const box = document.getElementById(`roundLM-${i}`);
+        if (box) {
+          box.classList.toggle('completed-LM', i <= roundsCompletedLM);
+        }
+      }
+    }
+
+    // Generate letters for the game
+    function generateLettersLM() {
+      const gameArea = document.getElementById('gameAreaLM');
+      gameArea.innerHTML = '';
+
+      const config = levelConfigLM[currentLevelLM];
+      totalLettersLM = config.targets;
+
+      // Set grid size
+      gameArea.style.gridTemplateColumns = `repeat(${config.gridSize}, 1fr)`;
+
+      const targetLetter = getRandomLetterLM();
+      document.getElementById('targetLetterLM').textContent = targetLetter;
+
+      // Create letters array
+      lettersLM = Array(config.targets).fill(targetLetter);
+      const similarLetters = getSimilarLettersGeorgianLM(targetLetter, config.similarLetters);
+
+      // Add distractors
+      const totalCells = config.gridSize * config.gridSize;
+      for (let i = 0; i < totalCells - config.targets; i++) {
+        lettersLM.push(similarLetters[i % similarLetters.length]);
+      }
+
+      // Shuffle and display
+      lettersLM = shuffleArrayLM(lettersLM);
+      lettersLM.forEach((letter) => {
+        const letterElement = document.createElement('div');
+        letterElement.className = 'letter-LM';
+        letterElement.dataset.value = letter;
+        letterElement.dataset.isTarget = (letter === targetLetter).toString();
+        letterElement.style.fontSize = `${config.fontSize}px`;
+        letterElement.textContent = letter;
+
+        // Ensure visible styling
+        letterElement.style.display = "flex";
+        letterElement.style.alignItems = "center";
+        letterElement.style.justifyContent = "center";
+        letterElement.style.width = "100%";
+        letterElement.style.height = "100%";
+
+        // Click handler
+        letterElement.onclick = function() {
+          if (!this.classList.contains('found-LM')) {
+            checkLetterLM(this);
+          }
+        };
+
+        gameArea.appendChild(letterElement);
+      });
+    }
+
+    // Check selected letter
+    function checkLetterLM(element) {
+      const targetLetter = document.getElementById('targetLetterLM').textContent;
+      const isCorrect = element.dataset.value === targetLetter;
+
+      if (isCorrect) {
+        // Correct letter
+        foundLettersLM++;
+        element.classList.add('found-LM');
+        foundElementsLM.push(element);
+        document.getElementById('foundCountLM').textContent = foundLettersLM;
+
+        // Check if all letters found
+        if (foundLettersLM >= totalLettersLM) {
+          document.getElementById('checkButtonContainerLM').style.display = 'block';
+        }
+      } else {
+        // Incorrect letter
+        element.classList.add('incorrect-LM');
+
+        setTimeout(() => {
+          element.classList.remove('incorrect-LM');
+        }, 500);
+      }
+    }
+
+    // Verify all found letters are correct
+    function verifyCompletionLM() {
+      const targetLetter = document.getElementById('targetLetterLM').textContent;
+      let allCorrect = true;
+
+      // Check all found elements
+      foundElementsLM.forEach(el => {
+        if (el.dataset.value !== targetLetter) {
+          allCorrect = false;
+          el.classList.add('incorrect-LM');
+        }
+      });
+
+      // Show results
+      if (allCorrect) {
+        document.getElementById('resultTitleLM').textContent = "ყოჩაღ!";
+        document.getElementById('resultMessageLM').textContent = `შენ იპოვე ${totalLettersLM} ${targetLetter}!`;
+        document.getElementById('resultTitleLM').style.color = "#4a6fa5";
+
+        // Update progress
+        completeRoundLM();
+      } else {
+        document.getElementById('resultTitleLM').textContent = "თითქმის!";
+        document.getElementById('resultMessageLM').textContent = "ზოგი ასო არ იყო სწორი, თავიდან სცადე!";
+        document.getElementById('resultTitleLM').style.color = "#f44336";
+      }
+
+      document.getElementById('feedbackModalLM').style.display = 'block';
+    }
+
+    // Complete a round and update progress
+    function completeRoundLM() {
+      roundsCompletedLM++;
+      updateRoundDisplayLM();
+
+      // Level up if completed all rounds
+      if (roundsCompletedLM >= maxRoundsLM && currentLevelLM < maxLevelsLM) {
+        roundsCompletedLM = 0;
+        currentLevelLM++;
+        updateLevelDisplayLM();
+      }
+    }
+
+    // Start new round
+    function startNewRoundLM() {
+      document.getElementById('feedbackModalLM').style.display = 'none';
+      initGameLM();
+    }
+
+    // Helper functions
+    function getRandomLetterLM() {
+      const letters = ['ბ', 'დ', 'პ', 'წ', 'შ', 'ნ', 'მ'];
+      return letters[Math.floor(Math.random() * letters.length)];
+    }
+
+    function getSimilarLettersGeorgianLM(letter, count) {
+      const similarMap = {
+        'ბ': ['დ', 'პ', 'ფ', 'გ', 'წ', 'ძ', 'თ', 'ჭ', 'ხ'],
+        'დ': ['ბ', 'თ', 'ტ', 'წ', 'ზ', 'ყ', 'ჭ', 'ხ', 'ფ'],
+        'პ': ['ბ', 'ფ', 'ფ', 'თ', 'ქ', 'ჭ', 'ხ', 'ზ', 'შ'],
+        'წ': ['შ', 'შ', 'ჟ', 'ჭ', 'ფ', 'ხ', 'ჯ', 'ძ', 'ტ'],
+        'შ': ['წ', 'ჟ', 'ჭ', 'ხ', 'ზ', 'ჯ', 'ტ', 'ფ', 'ძ'],
+        'ნ': ['მ', 'უ', 'ლ', 'ხ', 'ჯ', 'ყ', 'ტ', 'ზ', 'ფ'],
+        'მ': ['ნ', 'უ', 'ლ', 'ვ', 'ფ', 'ყ', 'თ', 'ჯ', 'ხ']
+      };
+      const allSimilar = similarMap[letter] || ['ა', 'ს', 'ტ', 'ქ', 'ყ', 'ზ', 'ხ', 'ღ', 'ფ'];
+      return allSimilar.slice(0, count);
+    }
+
+    function shuffleArrayLM(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function closeExerciseLM() {
+      document.getElementById('letter-mastery-game').style.display = 'none';
+      document.getElementById('startScreenLM').style.display = 'flex';
+      document.getElementById('gameScreenLM').style.display = 'none';
+      document.getElementById('exercisesSection').style.display='block';
+      // Reset game state
+      currentLevelLM = 1;
+      roundsCompletedLM = 0;
+    }
+
+    // Initialize on load
+    window.onload = function() {
+      document.getElementById('startScreenLM').style.display = 'flex';
+      document.getElementById('gameScreenLM').style.display = 'none';
+    };
+  </script>
+</div>
+
+<div id="emoji-word-finder-game" style="display: none; position: relative; width: 100%; height: 92vh;  overflow: hidden;">
+
+  <!-- Game Header with Level Indicator -->
+  <div style="background: #4aa581; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center;">
+    <h2 style="color: white; margin: 0; font-size: 18px; font-weight: 500;">
+      <span style="margin-right: 10px;">🔍</span> 
+      Emoji Word Finder
+    </h2>
+    
+    <!-- Level Indicator -->
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <div style="font-size: 14px; color: white; margin-right: 5px; font-weight: 500; margin-top: 3px;">Level</div>
+      <div id="level2-1" class="level-box-2 active-2">1</div>
+      <div id="level2-2" class="level-box-2">2</div>
+      <div id="level2-3" class="level-box-2">3</div>
+    </div>
+    
+    <div>
+      <button onclick="closeGame2()" style="background: none; color: white; border: 1px solid rgba(255,255,255,0.3); padding: 6px 12px; border-radius: 4px; font-size: 14px;">
+        უკან დაბრუნება
+      </button>
+    </div>
+  </div>
+
+  <!-- Start Screen -->
+  <div id="startScreen2" style="height: calc(100% - 54px); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center;">
+    <div style="max-width: 500px;">
+      <h3 style="color: #4aa581; font-size: 24px; margin-bottom: 20px;">Emoji Word Challenge</h3>
+      <div style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 30px;">
+        <p style="color: #64748b; margin-bottom: 15px; line-height: 1.6;">
+          იპოვე ემოჯის აღმნიშვნელი სიტყვა ასოების კონაში.
+        </p>
+        <p style="color: #64748b; margin-bottom: 15px; line-height: 1.6;">
+          სიტყვები შეიძლება იყოს ერთ მწკრივში, სვეტში ან დიაგონალზე ნებისმიერი მიმართულებით.
+        </p>
+        <p style="color: #64748b; line-height: 1.6;">
+          შემდეგ დონეზე გადასასვლელად, დაასრულე 4 რაუნდი.
+        </p>
+      </div>
+      <button onclick="startGame2()" style="background: #4aa581; color: white; border: none; padding: 14px 40px; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        თამაშის დაწყება
+      </button>
+    </div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="gameScreen2" style="height: calc(100% - 54px); display: none; flex-direction: column;">
+    
+    <!-- Game Content -->
+    <div style="flex: 1; display: flex; flex-direction: column; padding: 20px; overflow-y: auto;">
+      
+      <!-- Emoji Clues -->
+      <div style="text-align: center; margin-bottom: 20px;">
+        <div style="display: inline-block; background: #e2e8f0; padding: 12px 20px; border-radius: 20px;">
+          <span style="font-size: 14px; color: #4aa581;">იპოვე ყველა:</span>
+          <div id="targetEmojis2" style="display: flex; gap: 15px; margin-top: 10px; justify-content: center;">
+            <!-- Emojis will be inserted here -->
+          </div>
+        </div>
+        <div style="margin-top: 10px;">
+          <span id="foundCount2" style="font-size: 16px; font-weight: bold; color: #4aa581;">0</span>
+          <span style="font-size: 16px; color: #94a3b8;">/</span>
+          <span id="totalWords2" style="font-size: 16px; color: #94a3b8;">3</span>
+          <span style="font-size: 16px; color: #94a3b8;"> ნაპოვნი სიტყვა</span>
+        </div>
+      </div>
+
+      <!-- Word Grid -->
+      <div id="wordGrid2" style="margin: 0 auto; display: grid; gap: 16px; background: #e2e8f0; padding: 15px; border-radius: 8px;">
+        <!-- Letters will be generated here -->
+      </div>
+
+      <!-- Check Button -->
+      <div id="checkButtonContainer2" style="display: none; text-align: center; margin-top: 20px;">
+        <button onclick="checkAnswers2()" style="background: #4aa581; color: white; border: none; padding: 12px 30px; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer;">
+          პასუხის შემოწმება
+        </button>
+      </div>
+    </div>
+
+    <!-- Round Progress -->
+    <div style="padding: 15px 20px; background: #edf2f7; border-top: 1px solid #e2e8f0; display: flex; justify-content: center; gap: 15px;">
+      <div id="round2-1" class="round-box-2"></div>
+      <div id="round2-2" class="round-box-2"></div>
+      <div id="round2-3" class="round-box-2"></div>
+      <div id="round2-4" class="round-box-2"></div>
+    </div>
+  </div>
+
+  <!-- Feedback Modal -->
+  <div id="feedbackModal2" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.1); text-align: center; max-width: 300px; width: 90%; z-index: 100;">
+    <div id="resultIcon2" style="width: 60px; height: 60px; background: #4aa581; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center;">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 6L9 17L4 12" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h3 id="resultTitle2" style="color: #4aa581; margin-bottom: 10px; font-size: 18px;">ყოჩაღ!</h3>
+    <p id="resultMessage2" style="color: #64748b; margin-bottom: 20px; font-size: 15px;">შენ იპოვე 3 ივე სიტყვა სწორად!</p>
+    <button onclick="nextRound2()" style="background: #4aa581; color: white; border: none; padding: 8px 20px; border-radius: 6px; font-size: 14px; cursor: pointer; width: 100%;">
+      გააგრძელე
+    </button>
+  </div>
+
+  <style>
+    /* Level Boxes */
+    .level-box-2 {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .level-box-2.active-2 {
+      background: white;
+      color: #4a6fa5;
+      transform: scale(1.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .level-box-2:not(.active-2):hover {
+      background: rgba(255,255,255,0.3);
+      transform: scale(1.05);
+    }
+    
+    /* Round Boxes */
+    .round-box-2 {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+    .round-box-2.completed-2::after {
+      content: "✓";
+      color: #4CAF50;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    
+    /* Emoji Clues */
+    .emoji-clue {
+      font-size: 32px; /* Larger emoji size */
+      padding: 8px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    /* Letter Cells */
+    .letter-cell-2 {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s;
+      margin: 2px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .letter-cell-2:hover {
+      transform: scale(1.05);
+    }
+    
+    .letter-cell-2.selected-2 {
+      background: #4a6fa5;
+      color: white;
+      transform: scale(0.95);
+    }
+    
+    .letter-cell-2.found-2 {
+      background: #4CAF50;
+      color: white;
+    }
+    
+    .letter-cell-2.incorrect-2 {
+      background: #f44336;
+      color: white;
+    }
+  </style>
+
+  <script>
+    // Game configuration with multiple variants for each level
+    const gameConfig2 = {
+      levels: {
+        1: { 
+          gridSize: 7, 
+          wordCount: 3,
+          variants: [
+            // Variant 1
+            [
+              { emoji: "🌞", word: "მზე"},
+              { emoji: "🌳", word: "ტყე" },
+              { emoji: "🐐", word: "თხა" }
+            ],
+            // Variant 2
+            [
+              { emoji: "🐦", word: "ჩიტი"  },
+              { emoji: "👅", word: "ენა" },
+              { emoji: "🥛", word: "რძე" }
+            ],
+            // Variant 3
+            [
+              { emoji: "🪨", word: "ქვა" },
+              { emoji: "✂️", word: "ჭრა" },
+              { emoji: "🏔️", word: "მთა" }
+            ],
+            // Variant 4
+            [
+              { emoji: "🐐", word: "თხა" },
+              { emoji: "🥛", word: "რძე" },
+              { emoji: "🪨", word: "ქვა" }
+            ]
+          ]
+        },
+        2: { 
+          gridSize: 7, 
+          wordCount: 4,
+          variants: [
+            // Variant 1
+            [
+              { emoji: "🐦", word: "ჩიტი" },
+              { emoji: "🦁", word: "ლომი" },
+              { emoji: "🫏", word: "ვირი" },
+              { emoji: "🐱", word: "კატა" }
+            ],
+            // Variant 2
+            [
+              { emoji: "🐶", word: "ძაღლი" },
+              { emoji: "🚢", word: "გემი" },
+              { emoji: "🌙", word: "მთვარე" },
+              { emoji: "🚪", word: "კარი" }, 
+            ],
+            // Variant 3
+            [
+              { emoji: "🪑", word: "სკამი " } ,
+              { emoji: "🏠", word: "სახლი " }, 
+              { emoji: "❄️", word: "ფიფქი" },
+              { emoji: "🚢", word: "გემი" },
+            ],
+            // Variant 4
+            [
+              { emoji: "🦁", word: "ლომი" },
+              { emoji: "🐱", word: "კატა" },
+              { emoji: "🐶", word: "ძაღლი" },
+              { emoji: "❄️", word: "ფიფქი" },
+            ]
+          ]
+        },
+        3: { 
+          gridSize: 8, 
+          wordCount: 5,
+          variants: [
+            // Variant 1
+            [
+              { emoji: "🍎", word: "ვაშლი" },
+              { emoji: "📖", word: "წიგნი" },
+              { emoji: "🎵", word: "მუსიკა" },
+              { emoji: "💧", word: "წყალი" },
+              { emoji: "🏠", word: "სახლი" }
+            ],
+            // Variant 2
+            [
+              { emoji: "🚀", word: "რაკეტა" },
+              { emoji: "🍼", word: "ბოთლი" },
+              { emoji: "🪑", word: "სკამი" },
+              { emoji: "🐘", word: "სპილო" },
+              { emoji: "🚪", word: "კარები" }
+            ],
+            // Variant 3
+            [
+              { emoji: "🐟", word: "თევზი" },
+              { emoji: "❄️", word: "ფიფქი" },
+              { emoji: "🥛", word: "რძე" },
+              { emoji: "👅", word: "ენა" },
+              { emoji: "🐐", word: "თხა" }
+            ],
+            // Variant 4
+            [
+              { emoji: "❄️", word: "ფიფქი" },
+              { emoji: "🚀", word: "რაკეტა" },
+              { emoji: "🍎", word: "ვაშლი" },
+              { emoji: "🫏", word: "ვირი" },
+              { emoji: "🌙", word: "მთვარე" },
+            ]
+          ]
+        }
+      }
+    };
+    
+    // Game state
+    let currentLevel2 = 1;
+    let roundsCompleted2 = 0;
+    let selectedCells2 = [];
+    let foundWords2 = [];
+    let currentEmojiWords2 = [];
+    let gridData2 = [];
+    const georgianLetters = 'აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ';
+    
+    // Start the game
+    function startGame2() {
+      document.getElementById('startScreen2').style.display = 'none';
+      document.getElementById('gameScreen2').style.display = 'flex';
+      initRound2();
+    }
+    
+    // Initialize a new round
+    function initRound2() {
+      // Reset game state
+      selectedCells2 = [];
+      foundWords2 = [];
+      document.getElementById('foundCount2').textContent = '0';
+      
+      // Get level configuration
+      const level = gameConfig2.levels[currentLevel2];
+      document.getElementById('totalWords2').textContent = level.wordCount;
+      
+      // Get the variant for this round (cycling through the available variants)
+      const variantIndex = roundsCompleted2 % level.variants.length;
+      currentEmojiWords2 = [...level.variants[variantIndex]];
+      
+      // Display emoji clues
+      const emojiContainer = document.getElementById('targetEmojis2');
+      emojiContainer.innerHTML = '';
+      currentEmojiWords2.forEach(item => {
+        const emojiDiv = document.createElement('div');
+        emojiDiv.className = 'emoji-clue';
+        emojiDiv.textContent = item.emoji;
+        emojiContainer.appendChild(emojiDiv);
+      });
+      
+      // Generate grid with the actual words
+      const words = currentEmojiWords2.map(item => item.word);
+      gridData2 = generateGrid2(level.gridSize, words);
+      renderGrid2();
+      
+      // Update UI
+      updateLevelDisplay2();
+      updateRoundDisplay2();
+      document.getElementById('checkButtonContainer2').style.display = 'none';
+    }
+    
+    // Generate the letter grid with hidden words
+    function generateGrid2(size, words) {
+      // Initialize empty grid
+      const grid = Array(size).fill().map(() => Array(size).fill(''));
+      
+      // Place words
+      words.forEach(word => {
+        let placed = false;
+        while (!placed) {
+          const direction = Math.floor(Math.random() * 8);
+          const row = Math.floor(Math.random() * size);
+          const col = Math.floor(Math.random() * size);
+          
+          if (canPlaceWord2(grid, word, row, col, direction)) {
+            placeWord2(grid, word, row, col, direction);
+            placed = true;
+          }
+        }
+      });
+      
+      // Fill remaining spaces with random letters
+      for (let i = 0; i < size; i++) {
+        for (let j = 0; j < size; j++) {
+          if (grid[i][j] === '') {
+            grid[i][j] = georgianLetters[Math.floor(Math.random() * georgianLetters.length)];
+          }
+        }
+      }
+      
+      return grid;
+    }
+    
+    // Check if a word can be placed at a position
+    function canPlaceWord2(grid, word, row, col, direction) {
+      const size = grid.length;
+      const dr = [0, 1, 1, 1, 0, -1, -1, -1][direction];
+      const dc = [1, 1, 0, -1, -1, -1, 0, 1][direction];
+      
+      for (let i = 0; i < word.length; i++) {
+        const newRow = row + i * dr;
+        const newCol = col + i * dc;
+        
+        if (newRow < 0 || newRow >= size || newCol < 0 || newCol >= size) {
+          return false;
+        }
+        
+        if (grid[newRow][newCol] !== '' && grid[newRow][newCol] !== word[i]) {
+          return false;
+        }
+      }
+      
+      return true;
+    }
+    
+    // Place a word in the grid
+    function placeWord2(grid, word, row, col, direction) {
+      const dr = [0, 1, 1, 1, 0, -1, -1, -1][direction];
+      const dc = [1, 1, 0, -1, -1, -1, 0, 1][direction];
+      
+      for (let i = 0; i < word.length; i++) {
+        grid[row + i * dr][col + i * dc] = word[i];
+      }
+    }
+    
+    // Render the grid in the DOM
+    function renderGrid2() {
+      const wordGrid = document.getElementById('wordGrid2');
+      wordGrid.innerHTML = '';
+      const size = gridData2.length;
+      
+      // Set grid style
+      wordGrid.style.gridTemplateColumns = `repeat(${size}, 42px)`;
+      
+      // Create cells
+      for (let i = 0; i < size; i++) {
+        for (let j = 0; j < size; j++) {
+          const cell = document.createElement('div');
+          cell.className = 'letter-cell-2';
+          cell.textContent = gridData2[i][j].toUpperCase();
+          cell.dataset.row = i;
+          cell.dataset.col = j;
+          
+          cell.addEventListener('click', () => selectCell2(cell, i, j));
+          
+          wordGrid.appendChild(cell);
+        }
+      }
+    }
+    
+    // Handle cell selection
+    function selectCell2(cell, row, col) {
+      // If already found, ignore
+      if (cell.classList.contains('found-2')) return;
+      
+      // Toggle selection
+      if (cell.classList.contains('selected-2')) {
+        cell.classList.remove('selected-2');
+        selectedCells2 = selectedCells2.filter(c => c.row !== row || c.col !== col);
+      } else {
+        cell.classList.add('selected-2');
+        selectedCells2.push({ row, col, cell });
+      }
+      
+      // Check if we should enable the check button
+      document.getElementById('checkButtonContainer2').style.display = 
+        selectedCells2.length >= 3 ? 'block' : 'none';
+    }
+    
+    // Check if selected cells form a valid word
+    function checkAnswers2() {
+      // Get the selected letters
+      const selectedWord = selectedCells2.map(c => gridData2[c.row][c.col]).join('').toLowerCase();
+      const reversedWord = [...selectedWord].reverse().join('');
+      
+      // Check if it matches any target word
+      let isCorrect = false;
+      for (const item of currentEmojiWords2) {
+        if (!foundWords2.includes(item.word) && 
+            (item.word === selectedWord || item.word === reversedWord)) {
+          isCorrect = true;
+          foundWords2.push(item.word);
+          markCellsAsFound2();
+          break;
+        }
+      }
+      
+      // Update UI
+      if (isCorrect) {
+        document.getElementById('foundCount2').textContent = foundWords2.length;
+        if (foundWords2.length === currentEmojiWords2.length) {
+          showFeedback2(true);
+        } else {
+          clearSelection2();
+        }
+      } else {
+        markCellsAsIncorrect2();
+        setTimeout(() => clearSelection2(), 1000);
+      }
+    }
+    
+    // Mark cells as found (correct)
+    function markCellsAsFound2() {
+      selectedCells2.forEach(({ cell }) => {
+        cell.classList.remove('selected-2');
+        cell.classList.add('found-2');
+      });
+    }
+    
+    // Mark cells as incorrect
+    function markCellsAsIncorrect2() {
+      selectedCells2.forEach(({ cell }) => {
+        cell.classList.remove('selected-2');
+        cell.classList.add('incorrect-2');
+      });
+    }
+    
+    // Clear current selection
+    function clearSelection2() {
+      selectedCells2.forEach(({ cell }) => {
+        cell.classList.remove('selected-2', 'incorrect-2');
+      });
+      selectedCells2 = [];
+      document.getElementById('checkButtonContainer2').style.display = 'none';
+    }
+    
+    // Show feedback modal
+    function showFeedback2(isSuccess) {
+      if (isSuccess) {
+        document.getElementById('resultTitle2').textContent = "ყოჩაღ!";
+        document.getElementById('resultMessage2').textContent = `შენ იპოვე ყველა ${currentEmojiWords2.length}!`;
+        document.getElementById('resultTitle2').style.color = "#4aa581";
+        document.getElementById('resultIcon2').style.background = "#4aa581";
+      } else {
+        document.getElementById('resultTitle2').textContent = "თავიდან სცადე!";
+        document.getElementById('resultMessage2').textContent = "ზოგი სიტყვა არ იყო სწორი.";
+        document.getElementById('resultTitle2').style.color = "#f44336";
+        document.getElementById('resultIcon2').style.background = "#f44336";
+      }
+      document.getElementById('feedbackModal2').style.display = 'block';
+    }
+    
+    // Complete the current round
+    function completeRound2() {
+      roundsCompleted2++;
+      updateRoundDisplay2();
+      
+      if (roundsCompleted2 >= 4 && currentLevel2 < 3) {
+        roundsCompleted2 = 0;
+        currentLevel2++;
+        updateLevelDisplay2();
+      }
+    }
+    
+    // Start next round
+    function nextRound2() {
+      document.getElementById('feedbackModal2').style.display = 'none';
+      completeRound2();
+      initRound2();
+    }
+    
+    // Update level display
+    function updateLevelDisplay2() {
+      for (let i = 1; i <= 3; i++) {
+        const box = document.getElementById(`level2-${i}`);
+        box.style.background = i === currentLevel2 ? 'white' : 'rgba(255,255,255,0.2)';
+        box.style.color = i === currentLevel2 ? '#4aa581' : 'white';
+      }
+    }
+    
+    // Update round display
+    function updateRoundDisplay2() {
+      for (let i = 1; i <= 4; i++) {
+        const box = document.getElementById(`round2-${i}`);
+        box.className = i <= roundsCompleted2 ? 'round-box-2 completed-2' : 'round-box-2';
+      }
+    }
+    
+    // Close the game
+    function closeGame2() {
+      document.getElementById('emoji-word-finder-game').style.display = 'none';
+      document.getElementById('startScreen2').style.display = 'flex';
+      document.getElementById('gameScreen2').style.display = 'none';
+      document.getElementById('exercisesSection').style.display='block';
+      // Reset game state
+      currentLevel2 = 1;
+      roundsCompleted2 = 0;
+    }
+    
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('startScreen2').style.display = 'flex';
+      document.getElementById('gameScreen2').style.display = 'none';
+    });
+  </script>
+</div>
+
+<div id="find-words-game" style="display: none; position: relative; width: 100%; height: 92vh;  overflow: hidden;">
+
+  <!-- Game Header with Level Indicator -->
+  <div style="background: #8a4daf; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center;">
+    <h2 style="color: white; margin: 0; font-size: 18px; font-weight: 500;">
+      <span style="margin-right: 10px;">🔍</span> 
+      Word Search Challenge
+    </h2>
+    
+    <!-- Level Indicator -->
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <div style="font-size: 14px; color: white; margin-right: 5px; font-weight: 500; margin-top: 3px;">Level</div>
+      <div id="level-ws3-1" class="level-box-ws3 active-ws3">1</div>
+      <div id="level-ws3-2" class="level-box-ws3">2</div>
+      <div id="level-ws3-3" class="level-box-ws3">3</div>
+    </div>
+    
+    <div>
+      <button onclick="closeWordSearchGame3()" style="background: none; color: white; border: 1px solid rgba(255,255,255,0.3); padding: 6px 12px; border-radius: 4px; font-size: 14px;">
+        უკან დაბრუნება
+      </button>
+    </div>
+  </div>
+
+  <!-- Start Screen -->
+  <div id="startScreenWS3" style="height: calc(100% - 54px); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center;">
+    <div style="max-width: 500px;">
+      <h3 style="color: #8a4daf; font-size: 24px; margin-bottom: 20px;">Horizontal Word Search</h3>
+      <div style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 30px;">
+        <p style="color: #64748b; margin-bottom: 15px; line-height: 1.6;">
+          მოძებნე დამალული სიტყვა ასოების კონაში. სიტყვა მიუყვება მარცხნიდან მარჯვნივ.
+        </p>
+        <p style="color: #64748b; margin-bottom: 15px; line-height: 1.6;">
+          დონე 1: 1 დამალული სიტყვა<br>
+          დონე 2: 2 დამალული სიტყვა<br>
+          დონე 3: 3 დამალული სიტყვა
+        </p>
+        <p style="color: #64748b; line-height: 1.6;">
+          შემდეგ დონეზე გადასასვლელად, დაასრულე 4 რაუნდი.
+        </p>
+      </div>
+      <button onclick="startWordSearchGame3()" style="background: #8a4daf; color: white; border: none; padding: 14px 40px; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        თამაშის დაწყება
+      </button>
+    </div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="gameScreenWS3" style="height: calc(100% - 54px); display: none; flex-direction: column; align-items: center; justify-content: center;">
+    
+    <!-- Game Content -->
+    <div style="display: flex; flex-direction: column; align-items: center; width: 90%; max-width: 800px;">
+      
+      <!-- Instructions -->
+      <div style="text-align: center; margin-bottom: 20px;">
+        <div style="display: inline-block; background: #e2e8f0; padding: 12px 20px; border-radius: 20px;">
+          <span style="font-size: 14px; color: #8a4daf;">მოძებნე დამალული სიტყვა ასოების კონაში. სიტყვა მიუყვება მარცხნიდან მარჯვნივ.</span>
+        </div>
+        <div style="margin-top: 10px;">
+          <span id="foundCountWS3" style="font-size: 16px; font-weight: bold; color: #8a4daf;">0</span>
+          <span style="font-size: 16px; color: #94a3b8;">/</span>
+          <span id="totalWordsWS3" style="font-size: 16px; color: #94a3b8;">1</span>
+          <span style="font-size: 16px; color: #94a3b8;"> ნაპოვნი სიტყვა </span>
+        </div>
+      </div>
+
+      <!-- Word Row -->
+      <div id="wordRowWS3" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; background: #e2e8f0; padding: 15px; border-radius: 8px; margin-bottom: 20px; max-width: 100%; overflow-x: auto;">
+        <!-- Letters will be generated here -->
+      </div>
+
+      <!-- Check Button -->
+      <div id="checkButtonContainerWS3" style="display: none; text-align: center; margin-top: 10px;">
+        <button onclick="checkAnswersWS3()" style="background: #8a4daf; color: white; border: none; padding: 10px 25px; border-radius: 8px; font-size: 15px; font-weight: 500; cursor: pointer;">
+          პასუხის შემოწმება
+        </button>
+      </div>
+    </div>
+
+    <!-- Round Progress -->
+    <div style="padding: 15px 20px; background: #edf2f7; border-top: 1px solid #e2e8f0; display: flex; justify-content: center; gap: 15px; position: absolute; bottom: 0; width: 100%;">
+      <div id="roundWS3-1" class="round-box-ws3"></div>
+      <div id="roundWS3-2" class="round-box-ws3"></div>
+      <div id="roundWS3-3" class="round-box-ws3"></div>
+      <div id="roundWS3-4" class="round-box-ws3"></div>
+    </div>
+  </div>
+
+  <!-- Feedback Modal -->
+  <div id="feedbackModalWS3" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.1); text-align: center; max-width: 300px; width: 90%; z-index: 100;">
+    <div id="resultIconWS3" style="width: 60px; height: 60px; background: #8a4daf; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center;">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 6L9 17L4 12" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h3 id="resultTitleWS3" style="color: #8a4daf; margin-bottom: 10px; font-size: 18px;">ყოჩაღ!</h3>
+    <p id="resultMessageWS3" style="color: #64748b; margin-bottom: 20px; font-size: 15px;">შენ იპოვე ყველა სიტყვა!</p>
+    <button onclick="nextRoundWS3()" style="background: #8a4daf; color: white; border: none; padding: 8px 20px; border-radius: 6px; font-size: 14px; cursor: pointer; width: 100%;">
+      გაგრძელება
+    </button>
+  </div>
+
+  <style>
+    /* Level Boxes */
+    .level-box-ws3 {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .level-box-ws3.active-ws3 {
+      background: white;
+      color: #8a4daf;
+      transform: scale(1.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .level-box-ws3:not(.active-ws3):hover {
+      background: rgba(255,255,255,0.3);
+      transform: scale(1.05);
+    }
+    
+    /* Round Boxes */
+    .round-box-ws3 {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+    .round-box-ws3.completed-ws3::after {
+      content: "✓";
+      color: #8a4daf;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    
+    /* Letter Cells */
+    .letter-cell-ws3 {
+      width: 30px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+    
+    .letter-cell-ws3:hover {
+      transform: scale(1.05);
+    }
+    
+    .letter-cell-ws3.selected-ws3 {
+      background: #8a4daf;
+      color: white;
+      transform: scale(0.95);
+    }
+    
+    .letter-cell-ws3.found-ws3 {
+      background: #4CAF50;
+      color: white;
+    }
+    
+    .letter-cell-ws3.incorrect-ws3 {
+      background: #f44336;
+      color: white;
+    }
+  </style>
+
+  <script>
+    // Game configuration
+    const gameConfigWS3 = {
+      levels: {
+        1: { 
+          rowLength: 20,
+          wordCount: 1,
+          words: ["მთა", "მზე", "თმა", "ტბა", "ბიჭი", "ენა", "ეზო", "ტყე", "ორი", "რძე"]
+        },
+        2: { 
+          rowLength: 30,
+          wordCount: 2,
+          words: ["გემი", "ქარი", "ჭიქა", "ლამპა", "კარი", "თევზი", "ჩიტი", "იხვი", "წვიმა", "ლომი"]
+        },
+        3: { 
+          rowLength: 40,
+          wordCount: 3,
+          words: ["მაგიდა", "სახლი", "წყალი", "სკამი", "ბოთლი", "წიგნი", "კედელი", "კარადა", "წამალი", "კარები"]
+        }
+      }
+    };
+    
+    // Game state
+    let currentLevelWS3 = 1;
+    let roundsCompletedWS3 = 0;
+    let selectedCellsWS3 = [];
+    let foundWordsWS3 = [];
+    let hiddenWordsWS3 = [];
+    let rowDataWS3 = [];
+    
+    // Start the game
+    function startWordSearchGame3() {
+      document.getElementById('startScreenWS3').style.display = 'none';
+      document.getElementById('gameScreenWS3').style.display = 'flex';
+      initRoundWS3();
+    }
+    
+    // Initialize a new round
+    function initRoundWS3() {
+      // Reset game state
+      selectedCellsWS3 = [];
+      foundWordsWS3 = [];
+      document.getElementById('foundCountWS3').textContent = '0';
+      
+      // Get level configuration
+      const level = gameConfigWS3.levels[currentLevelWS3];
+      document.getElementById('totalWordsWS3').textContent = level.wordCount;
+      
+      // Select random words for this round
+      hiddenWordsWS3 = [];
+      const shuffledWords = [...level.words].sort(() => 0.5 - Math.random());
+      for (let i = 0; i < level.wordCount; i++) {
+        hiddenWordsWS3.push(shuffledWords[i]);
+      }
+      
+      // Generate row with the hidden words
+      rowDataWS3 = generateRowWS3(level.rowLength, hiddenWordsWS3);
+      renderRowWS3();
+      
+      // Update UI
+      updateLevelDisplayWS3();
+      updateRoundDisplayWS3();
+      document.getElementById('checkButtonContainerWS3').style.display = 'none';
+    }
+    
+    // Generate the letter row with hidden words
+    function generateRowWS3(length, words) {
+      // Initialize empty row
+      const row = Array(length).fill('');
+      
+      // Place words first
+      const wordPositions = [];
+      for (const word of words) {
+        let placed = false;
+        while (!placed) {
+          // Find a random position that doesn't overlap with existing words
+          const startPos = Math.floor(Math.random() * (length - word.length));
+          
+          // Check if this position is available
+          let canPlace = true;
+          for (let i = 0; i < word.length; i++) {
+            if (row[startPos + i] !== '' && 
+                wordPositions.some(pos => startPos + i >= pos.start && startPos + i < pos.end)) {
+              canPlace = false;
+              break;
+            }
+          }
+          
+          if (canPlace) {
+            // Place the word
+            for (let i = 0; i < word.length; i++) {
+              row[startPos + i] = word[i];
+            }
+            wordPositions.push({start: startPos, end: startPos + word.length});
+            placed = true;
+          }
+        }
+      }
+      
+      // Fill remaining spaces with random letters
+      const letters = 'აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ';
+      for (let i = 0; i < length; i++) {
+        if (row[i] === '') {
+          row[i] = letters[Math.floor(Math.random() * letters.length)];
+        }
+      }
+      
+      return row;
+    }
+    
+    // Render the row in the DOM
+    function renderRowWS3() {
+      const wordRow = document.getElementById('wordRowWS3');
+      wordRow.innerHTML = '';
+      
+      // Create cells
+      for (let i = 0; i < rowDataWS3.length; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'letter-cell-ws3';
+        cell.textContent = rowDataWS3[i].toUpperCase();
+        cell.dataset.index = i;
+        
+        cell.addEventListener('click', () => selectCellWS3(cell, i));
+        
+        wordRow.appendChild(cell);
+      }
+    }
+    
+    // Handle cell selection
+    function selectCellWS3(cell, index) {
+      // If already found, ignore
+      if (cell.classList.contains('found-ws3')) return;
+      
+      // Toggle selection
+      if (cell.classList.contains('selected-ws3')) {
+        cell.classList.remove('selected-ws3');
+        selectedCellsWS3 = selectedCellsWS3.filter(c => c.index !== index);
+      } else {
+        // Only allow selecting adjacent cells
+        if (selectedCellsWS3.length > 0) {
+          const lastIndex = selectedCellsWS3[selectedCellsWS3.length - 1].index;
+          if (Math.abs(index - lastIndex) !== 1) {
+            return; // Not adjacent
+          }
+        }
+        
+        cell.classList.add('selected-ws3');
+        selectedCellsWS3.push({ index, cell });
+      }
+      
+      // Check if we should enable the check button
+      document.getElementById('checkButtonContainerWS3').style.display = 
+        selectedCellsWS3.length >= 3 ? 'block' : 'none';
+    }
+    
+    // Check if selected cells form a valid word
+    function checkAnswersWS3() {
+      // Get the selected letters in order
+      selectedCellsWS3.sort((a, b) => a.index - b.index);
+      const selectedWord = selectedCellsWS3.map(c => rowDataWS3[c.index]).join('').toLowerCase();
+      
+      // Check if it matches any target word
+      let isCorrect = false;
+      for (const word of hiddenWordsWS3) {
+        if (!foundWordsWS3.includes(word) && word === selectedWord) {
+          isCorrect = true;
+          foundWordsWS3.push(word);
+          markCellsAsFoundWS3();
+          break;
+        }
+      }
+      
+      // Update UI
+      if (isCorrect) {
+        document.getElementById('foundCountWS3').textContent = foundWordsWS3.length;
+        if (foundWordsWS3.length === hiddenWordsWS3.length) {
+          showFeedbackWS3(true);
+        } else {
+          clearSelectionWS3();
+        }
+      } else {
+        markCellsAsIncorrectWS3();
+        setTimeout(() => clearSelectionWS3(), 1000);
+      }
+    }
+    
+    // Mark cells as found (correct)
+    function markCellsAsFoundWS3() {
+      selectedCellsWS3.forEach(({ cell }) => {
+        cell.classList.remove('selected-ws3');
+        cell.classList.add('found-ws3');
+      });
+    }
+    
+    // Mark cells as incorrect
+    function markCellsAsIncorrectWS3() {
+      selectedCellsWS3.forEach(({ cell }) => {
+        cell.classList.remove('selected-ws3');
+        cell.classList.add('incorrect-ws3');
+      });
+    }
+    
+    // Clear current selection
+    function clearSelectionWS3() {
+      selectedCellsWS3.forEach(({ cell }) => {
+        cell.classList.remove('selected-ws3', 'incorrect-ws3');
+      });
+      selectedCellsWS3 = [];
+      document.getElementById('checkButtonContainerWS3').style.display = 'none';
+    }
+    
+    // Show feedback modal
+    function showFeedbackWS3(isSuccess) {
+      if (isSuccess) {
+        document.getElementById('resultTitleWS3').textContent = "Perfect!";
+        document.getElementById('resultMessageWS3').textContent = `You found all ${hiddenWordsWS3.length} hidden words!`;
+        document.getElementById('resultTitleWS3').style.color = "#8a4daf";
+        document.getElementById('resultIconWS3').style.background = "#8a4daf";
+      } else {
+        document.getElementById('resultTitleWS3').textContent = "Try Again!";
+        document.getElementById('resultMessageWS3').textContent = "That's not one of the hidden words.";
+        document.getElementById('resultTitleWS3').style.color = "#f44336";
+        document.getElementById('resultIconWS3').style.background = "#f44336";
+      }
+      document.getElementById('feedbackModalWS3').style.display = 'block';
+    }
+    
+    // Complete the current round
+    function completeRoundWS3() {
+      roundsCompletedWS3++;
+      updateRoundDisplayWS3();
+      
+      if (roundsCompletedWS3 >= 4 && currentLevelWS3 < 3) {
+        roundsCompletedWS3 = 0;
+        currentLevelWS3++;
+        updateLevelDisplayWS3();
+      }
+    }
+    
+    // Start next round
+    function nextRoundWS3() {
+      document.getElementById('feedbackModalWS3').style.display = 'none';
+      completeRoundWS3();
+      initRoundWS3();
+    }
+    
+    // Update level display
+    function updateLevelDisplayWS3() {
+      for (let i = 1; i <= 3; i++) {
+        const box = document.getElementById(`level-ws3-${i}`);
+        box.style.background = i === currentLevelWS3 ? 'white' : 'rgba(255,255,255,0.2)';
+        box.style.color = i === currentLevelWS3 ? '#8a4daf' : 'white';
+      }
+    }
+    
+    // Update round display
+    function updateRoundDisplayWS3() {
+      for (let i = 1; i <= 4; i++) {
+        const box = document.getElementById(`roundWS3-${i}`);
+        box.className = i <= roundsCompletedWS3 ? 'round-box-ws3 completed-ws3' : 'round-box-ws3';
+      }
+    }
+    
+    // Close the game
+    function closeWordSearchGame3() {
+      document.getElementById('find-words-game').style.display = 'none';
+      document.getElementById('startScreenWS3').style.display = 'flex';
+      document.getElementById('gameScreenWS3').style.display = 'none';
+      document.getElementById('exercisesSection').style.display='block';
+      // Reset game state
+      currentLevelWS3 = 1;
+      roundsCompletedWS3 = 0;
+
+      document.getElementById('find-words-game').style.display = 'none';
+      document.getElementById('startScreen2').style.display = 'flex';
+      document.getElementById('gameScreen2').style.display = 'none';
+      document.getElementById('exercisesSection').style.display='block';
+      // Reset game state
+    }
+    
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('startScreenWS3').style.display = 'flex';
+      document.getElementById('gameScreenWS3').style.display = 'none';
+    });
+  </script>
+</div>
+
+<div id="odd-one-out-game" style="display: none; position: relative; width: 100%; height: 92vh;  overflow: hidden;">
+
+  <!-- Game Header (same as before) -->
+  <div style="background: #af4c63; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center;">
+    <h2 style="color: white; margin: 0; font-size: 18px; font-weight: 500;">
+      <span style="margin-right: 10px;">🎯</span> 
+      Odd One Out Challenge
+    </h2>
+    
+    <!-- Level Indicator -->
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <div style="font-size: 14px; color: white; margin-right: 5px; font-weight: 500; margin-top: 3px;">Level</div>
+      <div id="level-ooo-1" class="level-box-ooo active-ooo">1</div>
+      <div id="level-ooo-2" class="level-box-ooo">2</div>
+      <div id="level-ooo-3" class="level-box-ooo">3</div>
+    </div>
+    
+    <div>
+      <button onclick="closeOddOneOutGame()" style="background: none; color: white; border: 1px solid rgba(255,255,255,0.3); padding: 6px 12px; border-radius: 4px; font-size: 14px;">
+        უკან დაბრუნება
+      </button>
+    </div>
+  </div>
+
+  <!-- Start Screen (same as before) -->
+  <div id="startScreenOOO" style="height: calc(100% - 54px); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center;">
+    <div style="max-width: 500px;">
+      <h3 style="color: #af4c63; font-size: 24px; margin-bottom: 20px;">Odd One Out Challenge</h3>
+      <div style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 30px;">
+        <p style="color: #64748b; margin-bottom: 15px; line-height: 1.6;">
+          მოძებნე ფოტო რომელიც სხვა ფოტოებს არ შეესაბამება!
+        </p>
+        <p style="color: #64748b; line-height: 1.6;">
+          შემდეგ დონეზე გადასასვლელად, დაასრულე 4 რაუნდი.
+        </p>
+      </div>
+      <button onclick="startOddOneOutGame()" style="background: #af4c63; color: white; border: none; padding: 14px 40px; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        თამაშის დაწყება
+      </button>
+    </div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="gameScreenOOO" style="height: calc(100% - 54px); display: none; flex-direction: column; align-items: center; justify-content: center;">
+    
+    <!-- Game Content -->
+    <div style="display: flex; flex-direction: column; align-items: center; width: 90%; max-width: 800px;">
+      
+      <!-- Instructions -->
+      <div style="text-align: center; margin-bottom: 20px;">
+        <div style="display: inline-block; background: #e2e8f0; padding: 12px 20px; border-radius: 20px;">
+          <span style="font-size: 14px; color: #af4c63;">მოძებნე ფოტო რომელიც სხვა ფოტოებს არ შეესაბამება!</span>
+        </div>
+        <div style="margin-top: 10px;">
+          <span id="roundCountOOO" style="font-size: 16px; font-weight: bold; color: #af4c63;">1</span>
+          <span style="font-size: 16px; color: #94a3b8;">/4 რაუნდი შეასრულე ჯერ</span>
+        </div>
+      </div>
+
+      <!-- Images Row -->
+      <div id="imagesRowOOO" style="display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding: 10px 0;">
+        <!-- Images will be inserted here -->
+      </div>
+
+      <!-- Check Button (hidden initially) -->
+      <button id="checkButtonOOO" onclick="checkAnswerOOO()" style="display: none; background: #af4c63; color: white; border: none; padding: 10px 30px; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; margin-top: 10px;">
+        Check Answer
+      </button>
+
+      <!-- Feedback Message -->
+      <div id="feedbackMessageOOO" style="height: 24px; margin: 10px 0; font-weight: bold;"></div>
+    </div>
+
+    <!-- Round Progress -->
+    <div style="padding: 15px 20px; background: #edf2f7; border-top: 1px solid #e2e8f0; display: flex; justify-content: center; gap: 15px; position: absolute; bottom: 0; width: 100%;">
+      <div id="roundOOO-1" class="round-box-ooo"></div>
+      <div id="roundOOO-2" class="round-box-ooo"></div>
+      <div id="roundOOO-3" class="round-box-ooo"></div>
+      <div id="roundOOO-4" class="round-box-ooo"></div>
+    </div>
+  </div>
+
+  <style>
+    /* Level and Round Boxes (same as before) */
+    .level-box-ooo {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .level-box-ooo.active-ooo {
+      background: white;
+      color: #af4c63;
+      transform: scale(1.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .round-box-ooo {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+    .round-box-ooo.completed-ooo::after {
+      content: "✓";
+      color: #af4c63;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    
+    /* Image Boxes - Updated for horizontal layout */
+    .image-box-ooo {
+      width: 120px;
+      height: 120px;
+      min-width: 120px;
+      background: white;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    
+    .image-box-ooo:hover {
+      transform: scale(1.03);
+    }
+    
+    .image-box-ooo.selected-ooo {
+      transform: scale(0.97);
+      box-shadow: 0 0 0 3px #af4c63;
+    }
+    
+    .image-box-ooo img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  </style>
+
+  <script>
+    // Game configuration
+    const gameConfigOOO = {
+      levels: {
+        1: {
+          rounds: [
+            {
+              similar: ["PhotosForOddOneOut/1lvl1round1.jpg", " PhotosForOddOneOut/2lvl1round1.jpg", " PhotosForOddOneOut/4lvl1round1.jpg", " PhotosForOddOneOut/5lvl1round1.jpg"],
+              different: " PhotosForOddOneOut/3lvl1round1.jpg"
+            },
+            {
+              similar: [" PhotosForOddOneOut/1lvl1round2.jpg", " PhotosForOddOneOut/2lvl1round2.jpg", " PhotosForOddOneOut/3lvl1round2.jpg",  " PhotosForOddOneOut/5lvl1round2.jpg"],
+              different: " PhotosForOddOneOut/4lvl1round2.jpg"
+            },
+            {
+              similar: [" PhotosForOddOneOut/1lvl1round3.jpg", " PhotosForOddOneOut/2lvl1round3.jpg", " PhotosForOddOneOut/3lvl1round3.jpg",  " PhotosForOddOneOut/4lvl1round3.jpg"],
+              different: " PhotosForOddOneOut/5lvl1round3.jpg"
+            },
+            {
+              similar: [" PhotosForOddOneOut/1lvl1round4.jpg", " PhotosForOddOneOut/2lvl1round4.jpg", " PhotosForOddOneOut/4lvl1round4.jpg",  " PhotosForOddOneOut/5lvl1round4.jpg"],
+              different: " PhotosForOddOneOut/3lvl1round4.jpg"
+            },
+          ]
+        },
+        2: {
+          rounds: [
+            {
+              similar: [" PhotosForOddOneOut/1lvl2round1.jpg", " PhotosForOddOneOut/3lvl2round1.jpg", " PhotosForOddOneOut/4lvl2round1.jpg",  " PhotosForOddOneOut/5lvl2round1.jpg"],
+              different: " PhotosForOddOneOut/2lvl2round1.jpg"
+            },
+            {
+              similar: [" PhotosForOddOneOut/2lvl2round2.jpg", "PhotosForOddOneOut/3lvl2round2.jpg", " PhotosForOddOneOut/4lvl2round2.jpg",  " PhotosForOddOneOut/5lvl2round2.jpg"],
+              different: " PhotosForOddOneOut/1lvl2round2.jpg"
+            },
+            {
+              similar: [" PhotosForOddOneOut/1lvl2round3.jpg", " PhotosForOddOneOut/2lvl2round3.jpg", " PhotosForOddOneOut/3lvl2round3.jpg",  " PhotosForOddOneOut/4lvl2round3.jpg"],
+              different: " PhotosForOddOneOut/5lvl2round3.jpg"
+            },
+            {
+              similar: [" PhotosForOddOneOut/1lvl2round4.jpg", " PhotosForOddOneOut/2lvl2round4.jpg", " PhotosForOddOneOut/4lvl2round4.jpg",  " PhotosForOddOneOut/5lvl2round4.jpg"],
+              different: " PhotosForOddOneOut/3lvl2round4.jpg"
+            },
+          ]
+        },
+        3: {
+          rounds: [
+            {
+              similar: [" PhotosForOddOneOut/1lvl3round1.jpg", " PhotosForOddOneOut/3lvl3round1.jpg", " PhotosForOddOneOut/4lvl3round1.jpg",  " PhotosForOddOneOut/5lvl3round1.jpg"],
+              different: " PhotosForOddOneOut/2lvl3round1.jpg"
+            },
+            {
+              similar: [" PhotosForOddOneOut/2lvl3round2.jpg", " PhotosForOddOneOut/3lvl3round2.jpg", " PhotosForOddOneOut/4lvl3round2.jpg",  " PhotosForOddOneOut/5lvl3round2.jpg"],
+              different: " PhotosForOddOneOut/1lvl3round2.jpg"
+            },
+            {
+              similar: [" PhotosForOddOneOut/1lvl3round3.jpg", " PhotosForOddOneOut/2lvl3round3.jpg", " PhotosForOddOneOut/3lvl3round3.jpg",  " PhotosForOddOneOut/4lvl3round3.jpg"],
+              different: " PhotosForOddOneOut/5lvl3round3.jpg"
+            },
+            {
+              similar: [" PhotosForOddOneOut/1lvl3round4.jpg", " PhotosForOddOneOut/2lvl3round4.jpg", " PhotosForOddOneOut/3lvl3round4.jpg",  " PhotosForOddOneOut/5lvl3round4.jpg"],
+              different: " PhotosForOddOneOut/4lvl3round4.jpg"
+            },
+          ]
+        }
+      }
+    };
+    
+    // Game state
+    let currentLevelOOO = 1;
+    let currentRoundOOO = 0;
+    let roundsCompletedOOO = 0;
+    let correctAnswerOOO = null;
+    let selectedImageOOO = null;
+    
+    // Start the game
+    function startOddOneOutGame() {
+      document.getElementById('startScreenOOO').style.display = 'none';
+      document.getElementById('gameScreenOOO').style.display = 'flex';
+      loadRoundOOO();
+    }
+    
+    // Load a round
+    function loadRoundOOO() {
+      const level = gameConfigOOO.levels[currentLevelOOO];
+      currentRoundOOO++;
+      
+      if (currentRoundOOO > level.rounds.length) {
+        completeLevelOOO();
+        return;
+      }
+      
+      const round = level.rounds[currentRoundOOO - 1];
+      correctAnswerOOO = round.different;
+      
+      // Combine and shuffle images
+      const allImages = [...round.similar, round.different];
+      shuffleArrayOOO(allImages);
+      
+      // Display images in a row
+      const row = document.getElementById('imagesRowOOO');
+      row.innerHTML = '';
+      
+      allImages.forEach((imgSrc, index) => {
+        const imgBox = document.createElement('div');
+        imgBox.className = 'image-box-ooo';
+        imgBox.dataset.src = imgSrc;
+        
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = "Game image";
+        
+        imgBox.appendChild(img);
+        imgBox.addEventListener('click', () => selectImageOOO(imgBox));
+        row.appendChild(imgBox);
+      });
+      
+      // Reset selection
+      selectedImageOOO = null;
+      document.getElementById('checkButtonOOO').style.display = 'none';
+      document.getElementById('feedbackMessageOOO').textContent = '';
+      
+      // Update UI
+      document.getElementById('roundCountOOO').textContent = roundsCompletedOOO;
+      updateLevelDisplayOOO();
+      updateRoundDisplayOOO();
+    }
+    
+    // Select an image
+    function selectImageOOO(imgBox) {
+      // Deselect previous selection
+      if (selectedImageOOO) {
+        selectedImageOOO.classList.remove('selected-ooo');
+      }
+      
+      // Select new image
+      imgBox.classList.add('selected-ooo');
+      selectedImageOOO = imgBox;
+      
+      // Show check button
+      document.getElementById('checkButtonOOO').style.display = 'block';
+    }
+    
+    // Check the answer
+    function checkAnswerOOO() {
+      if (!selectedImageOOO) return;
+      
+      const isCorrect = selectedImageOOO.dataset.src === correctAnswerOOO;
+      const feedback = document.getElementById('feedbackMessageOOO');
+      
+      if (isCorrect) {
+        feedback.textContent = "სწორია! 🎉";
+        feedback.style.color = "#4CAF50";
+        
+        setTimeout(() => {
+          roundsCompletedOOO++;
+          if (roundsCompletedOOO >= 4) {
+            completeLevelOOO();
+          } else {
+            loadRoundOOO();
+          }
+        }, 1000);
+      } else {
+        feedback.textContent = "არასწორია, თავიდან სცადე";
+        feedback.style.color = "#f44336";
+        selectedImageOOO.classList.remove('selected-ooo');
+        selectedImageOOO = null;
+        document.getElementById('checkButtonOOO').style.display = 'none';
+      }
+    }
+    
+    // Complete the current level
+    function completeLevelOOO() {
+      if (currentLevelOOO < 3) {
+        currentLevelOOO++;
+        currentRoundOOO = 0;
+        roundsCompletedOOO = 0;
+        loadRoundOOO();
+      } else {
+        // Game completed
+        alert("ყოჩაღ! შენ შეასრულე ყველა ლეველი სწორად!");
+        closeOddOneOutGame();
+      }
+    }
+    
+    // Update level display
+    function updateLevelDisplayOOO() {
+      for (let i = 1; i <= 3; i++) {
+        const box = document.getElementById(`level-ooo-${i}`);
+        box.style.background = i === currentLevelOOO ? 'white' : 'rgba(255,255,255,0.2)';
+        box.style.color = i === currentLevelOOO ? '#6a4caf' : 'white';
+      }
+    }
+    
+    // Update round display
+    function updateRoundDisplayOOO() {
+      for (let i = 1; i <= 4; i++) {
+        const box = document.getElementById(`roundOOO-${i}`);
+        box.className = i <= roundsCompletedOOO ? 'round-box-ooo completed-ooo' : 'round-box-ooo';
+      }
+    }
+    
+    // Close the game
+    function closeOddOneOutGame() {
+      document.getElementById('odd-one-out-game').style.display = 'none';
+      document.getElementById('startScreenOOO').style.display = 'flex';
+      document.getElementById('gameScreenOOO').style.display = 'none';
+      document.getElementById('exercisesSection').style.display='block';
+      // Reset game state
+      currentLevelOOO = 1;
+      currentRoundOOO = 0;
+      roundsCompletedOOO = 0;
+    }
+    
+    // Helper function to shuffle array
+    function shuffleArrayOOO(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+    
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('startScreenOOO').style.display = 'flex';
+      document.getElementById('gameScreenOOO').style.display = 'none';
+    });
+  </script>
+</div>
+
+<div id="syllable-builder-game" style="display:none; position: relative; width: 100%; height: 92vh; overflow: hidden;">
+
+  <!-- Game Header with Level Indicator -->
+  <div style="background: #d97706; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center;">
+    <h2 style="color: white; margin: 0; font-size: 18px; font-weight: 500;">
+      <span style="margin-right: 10px;">🧩</span> 
+      Syllable Builder
+    </h2>
+    
+    <!-- Level Indicator -->
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <div style="font-size: 14px; color: white; margin-right: 5px; font-weight: 500; margin-top: 3px;">Level</div>
+      <div id="level6-1" class="level-box-6 active-6">1</div>
+      <div id="level6-2" class="level-box-6">2</div>
+      <div id="level6-3" class="level-box-6">3</div>
+    </div>
+    
+    <div>
+      <button onclick="closeGame6()" style="background: none; color: white; border: 1px solid rgba(255,255,255,0.3); padding: 6px 12px; border-radius: 4px; font-size: 14px;">
+        უკან დაბრუნება
+      </button>
+    </div>
+  </div>
+
+  <!-- Start Screen -->
+  <div id="startScreen6" style="height: calc(100% - 54px); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center;">
+    <div style="max-width: 500px;">
+      <h3 style="color: #d97706; font-size: 24px; margin-bottom: 20px;">Syllable Building Challenge</h3>
+      <div style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 30px;">
+        <p style="color: #64748b; margin-bottom: 15px; line-height: 1.6;">
+          აშენე სიტყვები მარცვლების დახმარებით.
+        </p>
+        <p style="color: #64748b; margin-bottom: 15px; line-height: 1.6;">
+          დააჭირე მარცვლებს სწორი თანმიმდევრობით სიტყვის ასაშენებლად.
+        </p>
+        <p style="color: #64748b; line-height: 1.6;">
+          შემდეგ დონეზე გადასასვლელად, დაასრულე 4 რაუნდი.
+        </p>
+      </div>
+      <button onclick="startGame6()" style="background: #d97706; color: white; border: none; padding: 14px 40px; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        თამაშის დაწყება
+      </button>
+    </div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="gameScreen6" style="height: calc(100% - 54px); display: none; flex-direction: column;">
+    
+    <!-- Game Content -->
+    <div style="flex: 1; display: flex; flex-direction: column; padding: 20px; overflow-y: auto;">
+      
+      <!-- Target Image -->
+      <div style="text-align: center; margin-bottom: 30px;">
+        <div style="display: inline-block; background: #fed7aa; padding: 20px; border-radius: 20px;">
+          <div id="targetImage6" style="font-size: 80px; margin-bottom: 10px;">
+            <!-- Image will be inserted here -->
+          </div>
+          <div style="font-size: 14px; color: #d97706; font-weight: 500;">აშენე ეს სიტყვა!</div>
+        </div>
+      </div>
+
+      <!-- Building Area -->
+      <div style="text-align: center; margin-bottom: 30px;">
+        <div style="font-size: 14px; color: #d97706; margin-bottom: 10px; font-weight: 500;">შენი სიტყვა:</div>
+        <div id="buildingArea6" style="display: flex; justify-content: center; gap: 10px; min-height: 60px; align-items: center; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+          <!-- Selected syllables will appear here -->
+        </div>
+      </div>
+
+      <!-- Syllable Options -->
+      <div style="text-align: center; margin-bottom: 20px;">
+        <div style="font-size: 14px; color: #d97706; margin-bottom: 15px; font-weight: 500;">აირჩიე მარცვლები:</div>
+        <div id="syllableOptions6" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 600px; margin: 0 auto;">
+          <!-- Syllable options will be generated here -->
+        </div>
+      </div>
+
+      <!-- Check Button -->
+      <div id="checkButtonContainer6" style="display: none; text-align: center; margin-top: 20px;">
+        <button onclick="checkAnswers6()" style="background: #d97706; color: white; border: none; padding: 12px 30px; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer;">
+          პასუხის შემოწმება
+        </button>
+      </div>
+
+      <!-- Clear Button -->
+      <div style="text-align: center; margin-top: 10px;">
+        <button onclick="clearBuilding6()" style="background: #6b7280; color: white; border: none; padding: 8px 20px; border-radius: 6px; font-size: 14px; cursor: pointer;">
+          გასუფთავება
+        </button>
+      </div>
+    </div>
+
+    <!-- Round Progress -->
+    <div style="padding: 15px 20px; background: #edf2f7; border-top: 1px solid #e2e8f0; display: flex; justify-content: center; gap: 15px;">
+      <div id="round6-1" class="round-box-6"></div>
+      <div id="round6-2" class="round-box-6"></div>
+      <div id="round6-3" class="round-box-6"></div>
+      <div id="round6-4" class="round-box-6"></div>
+    </div>
+  </div>
+
+  <!-- Feedback Modal -->
+  <div id="feedbackModal6" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.1); text-align: center; max-width: 300px; width: 90%; z-index: 100;">
+    <div id="resultIcon6" style="width: 60px; height: 60px; background: #d97706; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center;">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 6L9 17L4 12" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h3 id="resultTitle6" style="color: #d97706; margin-bottom: 10px; font-size: 18px;">ყოჩაღ!</h3>
+    <p id="resultMessage6" style="color: #64748b; margin-bottom: 20px; font-size: 15px;">შენ სწორად აშენე სიტყვა!</p>
+    <button onclick="nextRound6()" style="background: #d97706; color: white; border: none; padding: 8px 20px; border-radius: 6px; font-size: 14px; cursor: pointer; width: 100%;">
+      გააგრძელე
+    </button>
+  </div>
+
+  <!-- Completion Reward Modal -->
+  <div id="completionModal6" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: linear-gradient(135deg, #fbbf24, #f59e0b); padding: 30px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); text-align: center; max-width: 350px; width: 90%; z-index: 200;">
+    <div style="font-size: 60px; margin-bottom: 15px;">🏆</div>
+    <h3 style="color: white; margin-bottom: 15px; font-size: 22px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">ბრავო!</h3>
+    <p style="color: white; margin-bottom: 20px; font-size: 16px; line-height: 1.5;">
+      შენ წარმატებით დაასრულე ყველა დონე!<br>
+      შენ ხარ ნამდვილი მარცვლების ოსტატი! 🌟
+    </p>
+    <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+      <div style="color: white; font-size: 14px;">შენი მიღწევები:</div>
+      <div style="color: white; font-size: 18px; font-weight: bold; margin-top: 5px;">3 დონე ✓ | 24 რაუნდი ✓</div>
+    </div>
+    <button onclick="closeCompletionModal6()" style="background: white; color: #d97706; border: none; padding: 10px 25px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+      მადლობა!
+    </button>
+  </div>
+
+  <style>
+    /* Level Boxes */
+    .level-box-6 {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .level-box-6.active-6 {
+      background: white;
+      color: #d97706;
+      transform: scale(1.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .level-box-6:not(.active-6):hover {
+      background: rgba(255,255,255,0.3);
+      transform: scale(1.05);
+    }
+    
+    /* Round Boxes */
+    .round-box-6 {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+    .round-box-6.completed-6::after {
+      content: "✓";
+      color: #d97706;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    
+    /* Syllable Cells */
+    .syllable-cell-6 {
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border: 2px solid transparent;
+      min-width: 50px;
+    }
+    
+    .syllable-cell-6:hover {
+      transform: scale(1.05);
+      border-color: #fed7aa;
+    }
+    
+    .syllable-cell-6.selected-6 {
+      background: #d97706;
+      color: white;
+      transform: scale(0.95);
+    }
+    
+    .syllable-cell-6.disabled-6 {
+      background: #e5e7eb;
+      color: #9ca3af;
+      cursor: not-allowed;
+    }
+    
+    .syllable-cell-6.disabled-6:hover {
+      transform: none;
+      border-color: transparent;
+    }
+    
+    /* Building area syllables */
+    .built-syllable-6 {
+      padding: 8px 12px;
+      background: #fed7aa;
+      color: #d97706;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .built-syllable-6:hover {
+      background: #fdba74;
+      transform: scale(1.05);
+    }
+  </style>
+
+  <script>
+    // Game configuration with syllable-based words
+    const gameConfig6 = {
+      levels: {
+        1: { 
+          wordCount: 1,
+          variants: [
+            // Variant 1
+            [
+              { image: "🐱", word: "კატა", syllables: ["კა", "ტა"], distractors: ["მა", "ბა", "გა"] }
+            ],
+            // Variant 2
+            [
+              { image: "🐶", word: "ძაღლი", syllables: ["ძაღ", "ლი"], distractors: ["მაღ", "ზი", "კი"] }
+            ],
+            // Variant 3
+            [
+              { image: "🏠", word: "სახლი", syllables: ["სახ", "ლი"], distractors: ["გაღ", "რი", "ძი"] }
+            ],
+            // Variant 4
+            [
+              { image: "🌳", word: "ხე", syllables: ["ხე",], distractors: ["ები","ფე", "ამა", "ღა"] }
+            ]
+          ]
+        },
+        2: { 
+          wordCount: 2,
+          variants: [
+            // Variant 1
+            [
+              { image: "🍎", word: "ვაშლი", syllables: ["ვაშ", "ლი"], distractors: ["ღაშ", "ზი"] },
+              { image: "🌞", word: "მზე", syllables: ["მზე",], distractors: ["ღზე", "ო","ე"] }
+            ],
+            // Variant 2
+            [
+              { image: "📖", word: "წიგნი", syllables: ["წიგ", "ნი"], distractors: ["ბიგ", "მი"] },
+              { image: "🚪", word: "კარი", syllables: ["კა", "რი"], distractors: ["ღა", "ზი"] }
+            ],
+            // Variant 3
+            [
+              { image: "🥛", word: "რძე", syllables: ["რძე",], distractors: ["გ", "ფე","კა"] },
+              { image: "🌙", word: "მთვარე", syllables: ["მთვა", "რე"], distractors: ["ღთვა", "ზე"] }
+            ],
+            // Variant 4
+            [
+              { image: "🐦", word: "ჩიტი", syllables: ["ჩი", "ტი"], distractors: ["ღი", "ზი"] },
+              { image: "💧", word: "წყალი", syllables: ["წყა", "ლი"], distractors: ["ღყა", "ზი"] }
+            ]
+          ]
+        },
+        3: { 
+          wordCount: 3,
+          variants: [
+            // Variant 1
+            [
+              { image: "🚗", word: "მანქანა", syllables: ["მან", "ქა", "ნა"], distractors: ["გან", "ღა", "მა"] },
+              { image: "🦋", word: "პეპელა", syllables: ["პე", "პე", "ლა"], distractors: ["ღე", "ზე", "ღა"] },
+              { image: "🌸", word: "ყვავილი", syllables: ["ყვა", "ვი", "ლი"], distractors: ["ღვა", "ზი", "ღი"] }
+            ],
+            // Variant 2
+            [
+              { image: "🏫", word: "სკოლა", syllables: ["სკო","ლა"], distractors: ["გ", "ღო", "ღა"] },
+              { image: "🎈", word: "ბურთი", syllables: ["ბურ", "თი"], distractors: ["ღურ", "ზი"] },
+              { image: "🍌", word: "ბანანი", syllables: ["ბა", "ნა", "ნი"], distractors: ["ღა", "მა", "ზი"] }
+            ],
+            // Variant 3
+            [
+              { image: "🐘", word: "სპილო", syllables: ["სპი","ლო"], distractors: ["გ", "ღი", "ღო"] },
+              { image: "🌺", word: "ვარდი", syllables: ["ვარ", "დი"], distractors: ["ღარ", "ზი"] },
+              { image: "🚲", word: "ველო", syllables: ["ვე", "ლო"], distractors: ["ღე", "ღო"] }
+            ],
+            // Variant 4
+            [
+              { image: "🍎", word: "ვაშლი", syllables: ["ვაშ", "ლი"], distractors: ["ღაშ", "ზი"] },
+              { image: "⭐", word: "ვარსკვლავი", syllables: ["ვარ", "სკვლა", "ვი"], distractors: ["ღარს", "ღვლა", "ზი"] },
+              { image: "❄️", word: "ფიფქი", syllables: ["ფიფ", "ქი"], distractors: ["ღოვ", "ზი"] }
+            ]
+          ]
+        }
+      }
+    };
+    
+    // Game state
+    let currentLevel6 = 1;
+    let roundsCompleted6 = 0;
+    let currentWords6 = [];
+    let currentWordIndex6 = 0;
+    let builtSyllables6 = [];
+    let completedWords6 = 0;
+    let allLevelsCompleted6 = false;
+    
+    // Start the game
+    function startGame6() {
+      document.getElementById('startScreen6').style.display = 'none';
+      document.getElementById('gameScreen6').style.display = 'flex';
+      initRound6();
+    }
+    
+    // Initialize a new round
+    function initRound6() {
+      // Reset game state
+      builtSyllables6 = [];
+      completedWords6 = 0;
+      currentWordIndex6 = 0;
+      
+      // Get level configuration
+      const level = gameConfig6.levels[currentLevel6];
+      
+      // Get the variant for this round
+      const variantIndex = roundsCompleted6 % level.variants.length;
+      currentWords6 = [...level.variants[variantIndex]];
+      
+      // Start with first word
+      displayCurrentWord6();
+      
+      // Update UI
+      updateLevelDisplay6();
+      updateRoundDisplay6();
+      document.getElementById('checkButtonContainer6').style.display = 'none';
+    }
+    
+    // Display the current word to build
+    function displayCurrentWord6() {
+      if (currentWordIndex6 >= currentWords6.length) {
+        // All words completed
+        showFeedback6(true);
+        return;
+      }
+      
+      const currentWord = currentWords6[currentWordIndex6];
+      
+      // Display image
+      document.getElementById('targetImage6').textContent = currentWord.image;
+      
+      // Clear building area
+      document.getElementById('buildingArea6').innerHTML = '';
+      builtSyllables6 = [];
+      
+      // Generate syllable options (word syllables + distractors)
+      const allSyllables = [...currentWord.syllables, ...currentWord.distractors];
+      shuffleArray(allSyllables);
+      
+      const syllableContainer = document.getElementById('syllableOptions6');
+      syllableContainer.innerHTML = '';
+      
+      allSyllables.forEach((syllable, index) => {
+        const syllableDiv = document.createElement('div');
+        syllableDiv.className = 'syllable-cell-6';
+        syllableDiv.textContent = syllable;
+        syllableDiv.dataset.syllable = syllable;
+        syllableDiv.dataset.index = index;
+        
+        syllableDiv.addEventListener('click', () => selectSyllable6(syllableDiv, syllable));
+        
+        syllableContainer.appendChild(syllableDiv);
+      });
+      
+      document.getElementById('checkButtonContainer6').style.display = 'none';
+    }
+    
+    // Handle syllable selection
+    function selectSyllable6(cell, syllable) {
+      // If already selected, ignore
+      if (cell.classList.contains('disabled-6')) return;
+      
+      // Add to building area
+      builtSyllables6.push(syllable);
+      
+      // Disable the cell
+      cell.classList.add('disabled-6');
+      
+      // Update building area
+      updateBuildingArea6();
+      
+      // Show check button if we have syllables
+      document.getElementById('checkButtonContainer6').style.display = 
+        builtSyllables6.length > 0 ? 'block' : 'none';
+    }
+    
+    // Update the building area display
+    function updateBuildingArea6() {
+      const buildingArea = document.getElementById('buildingArea6');
+      buildingArea.innerHTML = '';
+      
+      builtSyllables6.forEach((syllable, index) => {
+        const syllableDiv = document.createElement('div');
+        syllableDiv.className = 'built-syllable-6';
+        syllableDiv.textContent = syllable;
+        syllableDiv.dataset.index = index;
+        
+        syllableDiv.addEventListener('click', () => removeSyllable6(index));
+        
+        buildingArea.appendChild(syllableDiv);
+      });
+    }
+    
+    // Remove a syllable from building area
+    function removeSyllable6(index) {
+      const syllable = builtSyllables6[index];
+      builtSyllables6.splice(index, 1);
+      
+      // Re-enable the syllable option
+      const syllableCells = document.querySelectorAll('.syllable-cell-6');
+      syllableCells.forEach(cell => {
+        if (cell.dataset.syllable === syllable && cell.classList.contains('disabled-6')) {
+          cell.classList.remove('disabled-6');
+          return;
+        }
+      });
+      
+      updateBuildingArea6();
+      
+      // Hide check button if no syllables
+      document.getElementById('checkButtonContainer6').style.display = 
+        builtSyllables6.length > 0 ? 'block' : 'none';
+    }
+    
+    // Check if built word is correct
+    function checkAnswers6() {
+      const currentWord = currentWords6[currentWordIndex6];
+      const builtWord = builtSyllables6.join('').toLowerCase();
+      const targetWord = currentWord.word.toLowerCase();
+      
+      if (builtWord === targetWord) {
+        // Correct! Move to next word
+        completedWords6++;
+        currentWordIndex6++;
+        
+        // Small delay before showing next word or completion
+        setTimeout(() => {
+          displayCurrentWord6();
+        }, 500);
+        
+      } else {
+        // Incorrect - show feedback
+        showFeedback6(false);
+      }
+    }
+    
+    // Clear building area
+    function clearBuilding6() {
+      // Re-enable all syllable options
+      const syllableCells = document.querySelectorAll('.syllable-cell-6');
+      syllableCells.forEach(cell => {
+        cell.classList.remove('disabled-6');
+      });
+      
+      // Clear building area
+      builtSyllables6 = [];
+      updateBuildingArea6();
+      document.getElementById('checkButtonContainer6').style.display = 'none';
+    }
+    
+    // Show feedback modal
+    function showFeedback6(isSuccess) {
+      if (isSuccess) {
+        document.getElementById('resultTitle6').textContent = "ყოჩაღ!";
+        document.getElementById('resultMessage6').textContent = `შენ სწორად აშენე ყველა სიტყვა!`;
+        document.getElementById('resultTitle6').style.color = "#d97706";
+        document.getElementById('resultIcon6').style.background = "#d97706";
+      } else {
+        document.getElementById('resultTitle6').textContent = "თავიდან სცადე!";
+        document.getElementById('resultMessage6').textContent = "ეს არ არის სწორი სიტყვა.";
+        document.getElementById('resultTitle6').style.color = "#f44336";
+        document.getElementById('resultIcon6').style.background = "#f44336";
+      }
+      document.getElementById('feedbackModal6').style.display = 'block';
+    }
+    
+    // Complete the current round
+    function completeRound6() {
+      roundsCompleted6++;
+      updateRoundDisplay6();
+      
+      if (roundsCompleted6 >= 4 && currentLevel6 < 3) {
+        roundsCompleted6 = 0;
+        currentLevel6++;
+        updateLevelDisplay6();
+      } else if (roundsCompleted6 >= 4 && currentLevel6 === 3) {
+        // All levels completed!
+        allLevelsCompleted6 = true;
+      }
+    }
+    
+    // Start next round
+    function nextRound6() {
+      document.getElementById('feedbackModal6').style.display = 'none';
+      
+      if (completedWords6 === currentWords6.length) {
+        // Round completed successfully
+        completeRound6();
+        
+        // Check if all levels are completed
+        if (allLevelsCompleted6) {
+          showCompletionReward6();
+        } else {
+          initRound6();
+        }
+      } else {
+        // Continue current round - try again or clear for retry
+        clearBuilding6();
+      }
+    }
+    
+    // Show completion reward
+    function showCompletionReward6() {
+      document.getElementById('completionModal6').style.display = 'block';
+    }
+    
+    // Close completion modal
+    function closeCompletionModal6() {
+      document.getElementById('completionModal6').style.display = 'none';
+      // Reset to start screen
+      document.getElementById('gameScreen6').style.display = 'none';
+      document.getElementById('startScreen6').style.display = 'flex';
+      document.getElementById('exercisesSection').style.display = 'block';
+      // Reset all game state
+      currentLevel6 = 1;
+      roundsCompleted6 = 0;
+      allLevelsCompleted6 = false;
+    }
+    
+    // Update level display
+    function updateLevelDisplay6() {
+      for (let i = 1; i <= 3; i++) {
+        const box = document.getElementById(`level6-${i}`);
+        box.style.background = i === currentLevel6 ? 'white' : 'rgba(255,255,255,0.2)';
+        box.style.color = i === currentLevel6 ? '#d97706' : 'white';
+      }
+    }
+    
+    // Update round display
+    function updateRoundDisplay6() {
+      for (let i = 1; i <= 4; i++) {
+        const box = document.getElementById(`round6-${i}`);
+        box.className = i <= roundsCompleted6 ? 'round-box-6 completed-6' : 'round-box-6';
+      }
+    }
+    
+    // Close the game
+    function closeGame6() {
+      document.getElementById('syllable-builder-game').style.display = 'none';
+      document.getElementById('gaze-maze-game').style.display = 'none';
+      document.getElementById('exercisesSection').style.display = 'block';
+      // Reset game state
+      currentLevel6 = 1;
+      roundsCompleted6 = 0;
+      allLevelsCompleted6 = false;
+    }
+    
+    // Utility function to shuffle array
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+    
+  </script>
+</div>
+
+<div id="letter-order-game" style="display: none; position: relative; width: 100%; height: 92vh; overflow: hidden;">
+
+  <!-- Game Header with Level Indicator -->
+  <div style="background: #059669; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center;">
+    <h2 style="color: white; margin: 0; font-size: 18px; font-weight: 500;">
+      <span style="margin-right: 10px;">🔤</span> 
+      Letter Order Challenge
+    </h2>
+    
+    <!-- Level Indicator -->
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <div style="font-size: 14px; color: white; margin-right: 5px; font-weight: 500; margin-top: 3px;">Level</div>
+      <div id="level-ls-1" class="level-box-ls active-ls">1</div>
+      <div id="level-ls-2" class="level-box-ls">2</div>
+      <div id="level-ls-3" class="level-box-ls">3</div>
+    </div>
+    
+    <div>
+      <button onclick="closeLetterSequenceGame()" style="background: none; color: white; border: 1px solid rgba(255,255,255,0.3); padding: 6px 12px; border-radius: 4px; font-size: 14px;">
+        უკან დაბრუნება
+      </button>
+    </div>
+  </div>
+
+  <!-- Start Screen -->
+  <div id="startScreenLS" style="height: calc(100% - 54px); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center;">
+    <div style="max-width: 500px;">
+      <h3 style="color: #059669; font-size: 24px; margin-bottom: 20px;">Letter Sequence Builder</h3>
+      <div style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 30px;">
+        <p style="color: #64748b; margin-bottom: 15px; line-height: 1.6;">
+          დაალაგე ასოები სწორი რიგით და ააგე სიტყვა.
+        </p>
+        <p style="color: #64748b; margin-bottom: 15px; line-height: 1.6;">
+          დონე 1: მარტივი სირთულის სიტყვები<br>
+          დონე 2: საშუალო სირთულის სიტყვები<br>
+          დონე 3: რთული სირთულის სიტყვები
+        </p>
+        <p style="color: #64748b; line-height: 1.6;">
+          შემდეგ დონეზე გადასასვლელად, დაასრულე 4 რაუნდი.
+        </p>
+      </div>
+      <button onclick="startLetterSequenceGame()" style="background: #059669; color: white; border: none; padding: 14px 40px; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        თამაშის დაწყება
+      </button>
+    </div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="gameScreenLS" style="height: calc(100% - 54px); display: none; flex-direction: column;">
+    
+    <!-- Game Content -->
+    <div style="flex: 1; display: flex; flex-direction: column; padding: 20px; overflow-y: auto;">
+      
+      <!-- Target Image -->
+      <div style="text-align: center; margin-bottom: 30px;">
+        <div style="display: inline-block; background: #a7f3d0; padding: 20px; border-radius: 20px;">
+          <div id="targetImageLS" style="font-size: 80px; margin-bottom: 10px;">
+            <!-- Image will be inserted here -->
+          </div>
+          <div style="font-size: 14px; color: #059669; font-weight: 500;">დაალაგე ასოები!</div>
+        </div>
+      </div>
+
+      <!-- Building Area -->
+      <div style="text-align: center; margin-bottom: 30px;">
+        <div style="font-size: 14px; color: #059669; margin-bottom: 10px; font-weight: 500;">შენი სიტყვა:</div>
+        <div id="buildingAreaLS" style="display: flex; justify-content: center; gap: 8px; min-height: 60px; align-items: center; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+          <!-- Selected letters will appear here -->
+        </div>
+      </div>
+
+      <!-- Letter Options -->
+      <div style="text-align: center; margin-bottom: 20px;">
+        <div style="font-size: 14px; color: #059669; margin-bottom: 15px; font-weight: 500;">აირჩიე ასოები:</div>
+        <div id="letterOptionsLS" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 600px; margin: 0 auto;">
+          <!-- Letter options will be generated here -->
+        </div>
+      </div>
+
+      <!-- Check Button -->
+      <div id="checkButtonContainerLS" style="display: none; text-align: center; margin-top: 20px;">
+        <button onclick="checkAnswersLS()" style="background: #059669; color: white; border: none; padding: 12px 30px; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer;">
+          პასუხის შემოწმება
+        </button>
+      </div>
+
+      <!-- Clear Button -->
+      <div style="text-align: center; margin-top: 10px;">
+        <button onclick="clearBuildingLS()" style="background: #6b7280; color: white; border: none; padding: 8px 20px; border-radius: 6px; font-size: 14px; cursor: pointer;">
+          გასუფთავება
+        </button>
+      </div>
+    </div>
+
+    <!-- Round Progress -->
+    <div style="padding: 15px 20px; background: #edf2f7; border-top: 1px solid #e2e8f0; display: flex; justify-content: center; gap: 15px;">
+      <div id="roundLS-1" class="round-box-ls"></div>
+      <div id="roundLS-2" class="round-box-ls"></div>
+      <div id="roundLS-3" class="round-box-ls"></div>
+      <div id="roundLS-4" class="round-box-ls"></div>
+    </div>
+  </div>
+
+  <!-- Feedback Modal -->
+  <div id="feedbackModalLS" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.1); text-align: center; max-width: 300px; width: 90%; z-index: 100;">
+    <div id="resultIconLS" style="width: 60px; height: 60px; background: #059669; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center;">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 6L9 17L4 12" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h3 id="resultTitleLS" style="color: #059669; margin-bottom: 10px; font-size: 18px;">ყოჩაღ!</h3>
+    <p id="resultMessageLS" style="color: #64748b; margin-bottom: 20px; font-size: 15px;">შენ სწორად დაალაგე ასოები!</p>
+    <button onclick="nextRoundLS()" style="background: #059669; color: white; border: none; padding: 8px 20px; border-radius: 6px; font-size: 14px; cursor: pointer; width: 100%;">
+      გაგრძელება
+    </button>
+  </div>
+
+  <!-- Completion Reward Modal -->
+  <div id="completionModalLS" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: linear-gradient(135deg, #10b981, #059669); padding: 30px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); text-align: center; max-width: 350px; width: 90%; z-index: 200;">
+    <div style="font-size: 60px; margin-bottom: 15px;">🏆</div>
+    <h3 style="color: white; margin-bottom: 15px; font-size: 22px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">ბრავო!</h3>
+    <p style="color: white; margin-bottom: 20px; font-size: 16px; line-height: 1.5;">
+      შენ წარმატებით დაასრულე ყველა დონე!<br>
+      შენ ხარ ნამდვილი ასოების ოსტატი! 🌟
+    </p>
+    <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+      <div style="color: white; font-size: 14px;">შენი მიღწევები:</div>
+      <div style="color: white; font-size: 18px; font-weight: bold; margin-top: 5px;">3 დონე ✓ | 12 რაუნდი ✓</div>
+    </div>
+    <button onclick="closeCompletionModalLS()" style="background: white; color: #059669; border: none; padding: 10px 25px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+      მადლობა!
+    </button>
+  </div>
+
+  <style>
+    /* Level Boxes */
+    .level-box-ls {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .level-box-ls.active-ls {
+      background: white;
+      color: #059669;
+      transform: scale(1.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .level-box-ls:not(.active-ls):hover {
+      background: rgba(255,255,255,0.3);
+      transform: scale(1.05);
+    }
+    
+    /* Round Boxes */
+    .round-box-ls {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+    .round-box-ls.completed-ls::after {
+      content: "✓";
+      color: #059669;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    
+    /* Letter Cells */
+    .letter-cell-ls {
+      width: 45px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border: 2px solid transparent;
+    }
+    
+    .letter-cell-ls:hover {
+      transform: scale(1.05);
+      border-color: #a7f3d0;
+    }
+    
+    .letter-cell-ls.disabled-ls {
+      background: #e5e7eb;
+      color: #9ca3af;
+      cursor: not-allowed;
+    }
+    
+    .letter-cell-ls.disabled-ls:hover {
+      transform: none;
+      border-color: transparent;
+    }
+    
+    /* Building area letters */
+    .built-letter-ls {
+      width: 40px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #a7f3d0;
+      color: #059669;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 2px solid #059669;
+    }
+    
+    .built-letter-ls:hover {
+      background: #6ee7b7;
+      transform: scale(1.05);
+    }
+    
+    /* Animation for correct sequence */
+    .correct-animation {
+      animation: correctBounce 0.6s ease-in-out;
+    }
+    
+    @keyframes correctBounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+  </style>
+
+  <script>
+    // Game configuration
+    const gameConfigLS = {
+      levels: {
+        1: { 
+          words: [
+            { image: "🐱", word: "კატა", scrambled: ["ტ", "კ", "ა", "ა"] },
+            { image: "🌞", word: "მზე", scrambled: ["ე", "მ", "ზ"] },
+            { image: "🏠", word: "სახლი", scrambled: ["ს", "ლ", "ა", "ხ", "ი"] },
+            { image: "💧", word: "წყალი", scrambled: ["ყ", "წ", "ლ", "ა", "ი"] },
+            { image: "🌳", word: "ხე", scrambled: ["ე", "ხ"] },
+            { image: "🐶", word: "ძაღლი", scrambled: ["ღ", "ძ", "ლ", "ა", "ი"] },
+            { image: "📖", word: "წიგნი", scrambled: ["წ", "ნ", "ი", "გ", "ი"] },
+            { image: "🌙", word: "მთვარე", scrambled: ["მ", "ვ", "ე", "თ", "ა", "რ"] }
+          ]
+        },
+        2: { 
+          words: [
+            { image: "🚗", word: "მანქანა", scrambled: ["ქ", "მ", "ნ", "ა", "ა", "ნ"] },
+            { image: "🦋", word: "პეპელა", scrambled: ["პ", "ლ", "ე", "ა", "ე", "პ"] },
+            { image: "🍎", word: "ვაშლი", scrambled: ["შ", "ვ", "ი", "ა", "ლ"] },
+            { image: "🐦", word: "ჩიტი", scrambled: ["ტ", "ჩ", "ი", "ი"] },
+            { image: "🌸", word: "ყვავილი", scrambled: ["ყ", "ი", "ვ", "ლ", "ვ", "ა", "ი"] },
+            { image: "🚪", word: "კარი", scrambled: ["კ", "რ", "ა", "ი"] },
+            { image: "🎈", word: "ბურთი", scrambled: ["ბ", "თ", "რ", "უ", "ი"] },
+            { image: "🍌", word: "ბანანი", scrambled: ["ბ", "ნ", "ა", "ა", "ნ", "ი"] }
+          ]
+        },
+        3: { 
+          words: [
+            { image: "🏫", word: "სკოლა", scrambled: ["ს", "ო", "კ", "ლ", "ა"] },
+            { image: "🐘", word: "სპილო", scrambled: ["ს", "ო", "პ", "ლ", "ი"] },
+            { image: "🌺", word: "ვარდი", scrambled: ["ვ", "დ", "ა", "რ", "ი"] },
+            { image: "🚲", word: "ველო", scrambled: ["ვ", "ო", "ე", "ლ"] },
+            { image: "⭐", word: "ვარსკვლავი", scrambled: ["ვ", "რ", "კ", "ლ", "ა", "ს", "ვ", "ა", "ვ", "ი"] },
+            { image: "🕊️", word: "მტრედი", scrambled: ["მ", "რ", "ტ", "ე", "დ", "ი"] },
+            { image: "❄️", word: "ფიფქი", scrambled: ["ფ", "ი", "ქ", "ფ", "ი"] },
+            { image: "🍉", word: "საზამთრო", scrambled: ["ს", "ო", "ზ", "ა", "მ", "თ", "რ"]},
+          ]
+        }
+      }
+    };
+    
+    // Game state
+    let currentLevelLS = 1;
+    let roundsCompletedLS = 0;
+    let currentWordLS = null;
+    let builtLettersLS = [];
+    let availableLettersLS = [];
+    
+    // Start the game
+    function startLetterSequenceGame() {
+      document.getElementById('startScreenLS').style.display = 'none';
+      document.getElementById('gameScreenLS').style.display = 'flex';
+      initRoundLS();
+    }
+    
+    // Initialize a new round
+    function initRoundLS() {
+      // Reset game state
+      builtLettersLS = [];
+      
+      // Get level configuration
+      const level = gameConfigLS.levels[currentLevelLS];
+      
+      // Select random word for this round
+      currentWordLS = level.words[Math.floor(Math.random() * level.words.length)];
+      
+      // Set up available letters (scrambled)
+      availableLettersLS = [...currentWordLS.scrambled];
+      shuffleArray(availableLettersLS);
+      
+      // Display the word
+      displayCurrentWordLS();
+      
+      // Update UI
+      updateLevelDisplayLS();
+      updateRoundDisplayLS();
+      document.getElementById('checkButtonContainerLS').style.display = 'none';
+    }
+    
+    // Display the current word to build
+    function displayCurrentWordLS() {
+      // Display image
+      document.getElementById('targetImageLS').textContent = currentWordLS.image;
+      
+      // Clear building area
+      document.getElementById('buildingAreaLS').innerHTML = '';
+      builtLettersLS = [];
+      
+      // Generate letter options
+      const letterContainer = document.getElementById('letterOptionsLS');
+      letterContainer.innerHTML = '';
+      
+      availableLettersLS.forEach((letter, index) => {
+        const letterDiv = document.createElement('div');
+        letterDiv.className = 'letter-cell-ls';
+        letterDiv.textContent = letter;
+        letterDiv.dataset.letter = letter;
+        letterDiv.dataset.index = index;
+        
+        letterDiv.addEventListener('click', () => selectLetterLS(letterDiv, letter, index));
+        
+        letterContainer.appendChild(letterDiv);
+      });
+    }
+    
+    // Handle letter selection
+    function selectLetterLS(cell, letter, index) {
+      // If already disabled, ignore
+      if (cell.classList.contains('disabled-ls')) return;
+      
+      // Add to building area
+      builtLettersLS.push({letter, originalIndex: index});
+      
+      // Disable the cell
+      cell.classList.add('disabled-ls');
+      
+      // Update building area
+      updateBuildingAreaLS();
+      
+      // Show check button if we have letters
+      document.getElementById('checkButtonContainerLS').style.display = 
+        builtLettersLS.length > 0 ? 'block' : 'none';
+    }
+    
+    // Update the building area display
+    function updateBuildingAreaLS() {
+      const buildingArea = document.getElementById('buildingAreaLS');
+      buildingArea.innerHTML = '';
+      
+      builtLettersLS.forEach((letterData, index) => {
+        const letterDiv = document.createElement('div');
+        letterDiv.className = 'built-letter-ls';
+        letterDiv.textContent = letterData.letter;
+        letterDiv.dataset.index = index;
+        
+        letterDiv.addEventListener('click', () => removeLetterLS(index));
+        
+        buildingArea.appendChild(letterDiv);
+      });
+    }
+    
+    // Remove a letter from building area
+    function removeLetterLS(index) {
+      const letterData = builtLettersLS[index];
+      builtLettersLS.splice(index, 1);
+      
+      // Re-enable the letter option
+      const letterCells = document.querySelectorAll('.letter-cell-ls');
+      letterCells[letterData.originalIndex].classList.remove('disabled-ls');
+      
+      updateBuildingAreaLS();
+      
+      // Hide check button if no letters
+      document.getElementById('checkButtonContainerLS').style.display = 
+        builtLettersLS.length > 0 ? 'block' : 'none';
+    }
+    
+    // Check if built word is correct
+    function checkAnswersLS() {
+      const builtWord = builtLettersLS.map(data => data.letter).join('').toLowerCase();
+      const targetWord = currentWordLS.word.toLowerCase();
+      
+      if (builtWord === targetWord) {
+        // Correct! Add animation
+        const buildingArea = document.getElementById('buildingAreaLS');
+        buildingArea.classList.add('correct-animation');
+        
+        setTimeout(() => {
+          buildingArea.classList.remove('correct-animation');
+          showFeedbackLS(true);
+        }, 600);
+        
+      } else {
+        // Incorrect - show feedback
+        showFeedbackLS(false);
+      }
+    }
+    
+    // Clear building area
+    function clearBuildingLS() {
+      // Re-enable all letter options
+      const letterCells = document.querySelectorAll('.letter-cell-ls');
+      letterCells.forEach(cell => {
+        cell.classList.remove('disabled-ls');
+      });
+      
+      // Clear building area
+      builtLettersLS = [];
+      updateBuildingAreaLS();
+      document.getElementById('checkButtonContainerLS').style.display = 'none';
+    }
+    
+    // Show feedback modal
+    function showFeedbackLS(isSuccess) {
+      if (isSuccess) {
+        document.getElementById('resultTitleLS').textContent = "ყოჩაღ!";
+        document.getElementById('resultMessageLS').textContent = `შენ სწორად დაალაგე ასოები!`;
+        document.getElementById('resultTitleLS').style.color = "#059669";
+        document.getElementById('resultIconLS').style.background = "#059669";
+      } else {
+        document.getElementById('resultTitleLS').textContent = "თავიდან სცადე!";
+        document.getElementById('resultMessageLS').textContent = "ასოები არ არის სწორი რიგით.";
+        document.getElementById('resultTitleLS').style.color = "#f44336";
+        document.getElementById('resultIconLS').style.background = "#f44336";
+      }
+      document.getElementById('feedbackModalLS').style.display = 'block';
+    }
+    
+    // Complete the current round
+    function completeRoundLS() {
+      roundsCompletedLS++;
+      updateRoundDisplayLS();
+      
+      if (roundsCompletedLS >= 4 && currentLevelLS < 3) {
+        roundsCompletedLS = 0;
+        currentLevelLS++;
+        updateLevelDisplayLS();
+      } else if (roundsCompletedLS >= 4 && currentLevelLS === 3) {
+        // All levels completed!
+        showCompletionRewardLS();
+        return;
+      }
+    }
+    
+    // Start next round
+    function nextRoundLS() {
+      document.getElementById('feedbackModalLS').style.display = 'none';
+      
+      // Check if the last attempt was successful
+      const lastResultTitle = document.getElementById('resultTitleLS').textContent;
+      if (lastResultTitle === "ყოჩაღ!") {
+        // Only advance if successful
+        completeRoundLS();
+        initRoundLS();
+      } else {
+        // If incorrect, stay on same word - just clear and try again
+        clearBuildingLS();
+      }
+    }
+    
+    // Show completion reward
+    function showCompletionRewardLS() {
+      document.getElementById('completionModalLS').style.display = 'block';
+    }
+    
+    // Close completion modal
+    function closeCompletionModalLS() {
+      document.getElementById('completionModalLS').style.display = 'none';
+      // Reset to start screen
+      document.getElementById('gameScreenLS').style.display = 'none';
+      document.getElementById('startScreenLS').style.display = 'flex';
+      // Reset all game state
+      currentLevelLS = 1;
+      roundsCompletedLS = 0;
+    }
+    
+    // Update level display
+    function updateLevelDisplayLS() {
+      for (let i = 1; i <= 3; i++) {
+        const box = document.getElementById(`level-ls-${i}`);
+        if (box) {
+          box.classList.toggle('active-ls', i === currentLevelLS);
+        }
+      }
+    }
+    
+    // Update round display
+    function updateRoundDisplayLS() {
+      for (let i = 1; i <= 4; i++) {
+        const box = document.getElementById(`roundLS-${i}`);
+        if (box) {
+          box.className = i <= roundsCompletedLS ? 'round-box-ls completed-ls' : 'round-box-ls';
+        }
+      }
+    }
+    
+    // Close the game
+    function closeLetterSequenceGame() {
+      document.getElementById('gaze-maze-game').style.display = 'none';
+      document.getElementById('exercisesSection').style.display = 'block';
+      document.getElementById('letter-order-game').style.display = 'none';
+      // Reset game state
+      currentLevelLS = 1;
+      roundsCompletedLS = 0;
+    }
+    
+    // Utility function to shuffle array
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+    
+    // Initialize the game when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      updateLevelDisplayLS();
+      updateRoundDisplayLS();
+    });
+  </script>
+</div>
+
+<style>
+  /* Responsive adjustments */
+  @media (max-width: 1100px) {
+    #mainHeader {
+      padding: 12px 15px;
+    }
+    #mainHeader > div {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    #mainHeader nav ul {
+      gap: 10px;
+    }
+    #trackingStatus span:last-child {
+      display: none;
+    }
+    #mainHeader button {
+      padding: 6px 10px;
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 1250px) {
+    #mainHeader {
+      padding: 12px 15px;
+    }
+    #mainHeader > div {
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    #mainHeader nav ul {
+      gap: 5px;
+      font-size: 15.5px;
+    }
+    #trackingStatus span:last-child {
+      padding:2px;
+      font-size: 12px
+    }
+    #mainHeader button {
+      padding: 6px 10px;
+      font-size: 14px;
+    }
+  }
+</style>
+</div>
+
+
+<script> var exClick=false;
+</script>
+
+
+</body>
+</html>
